@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #EDF7F6;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.final_project.CustomerShowtimePageView">
+    <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="365.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../../../../../../../../../Pictures/Screenshots/5828768-200.png" />
+        </image>
+    </ImageView>
+    <Label fx:id="managerNameLabel" layoutX="398.0" layoutY="23.0" style="-fx-font-size: 14px;" text="Manager Name" />
+    <Label fx:id="managerAccountTitleLabel" layoutX="193.0" layoutY="26.0" prefHeight="33.0" prefWidth="146.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Manager Account" />
+    <Button fx:id="movieManagementLabel" layoutX="173.0" layoutY="120.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #D3D3D3; -fx-text-fill: #000000;" text="Movie management" />
+    <Button fx:id="screeningRoomManagementLabel" layoutX="171.0" layoutY="174.0" mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-text-fill: #000000;" text="Screening room management" />
+    <Button fx:id="showtimeManagementLabel" layoutX="173.0" layoutY="230.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #D3D3D3; -fx-text-fill: #000000;" text="Showtime management" />
+    <Button fx:id="resultDataLabel" layoutX="173.0" layoutY="286.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #D3D3D3; -fx-text-fill: #000000;" text="Result data" />
+    <Button fx:id="logOutButton" layoutX="436.0" layoutY="360.0" mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-text-fill: #000000;" text="Log out" />
+</AnchorPane>
