@@ -21,14 +21,15 @@ public class MovieModel {
     // private List<Showtime> availableShowtimes; // Association with Showtime class
 
     /**
-     * Constructs a new {@code ManagerMovieModel} with the specified title and genre.
+     * Constructs a new {@code MovieModel} with the specified title and genre.
      *
      * @param title the title of the movie.
      * @param genre the genre of the movie.
+     * @throws IllegalArgumentException if title or genre is null or empty.
      */
     public MovieModel(String title, String genre) {
-        this.title = title;
-        this.genre = genre;
+        setTitle(title);
+        setGenre(genre);
         // Uncomment to initialize showtimes if needed:
         // this.availableShowtimes = new ArrayList<>();
     }
@@ -46,8 +47,12 @@ public class MovieModel {
      * Updates the title of the movie.
      *
      * @param title the new title of the movie.
+     * @throws IllegalArgumentException if the title is null or empty.
      */
     public void setTitle(String title) {
+        if (title == null || title.trim().isEmpty()) {
+            throw new IllegalArgumentException("Movie title cannot be null or empty.");
+        }
         this.title = title;
     }
 
@@ -64,8 +69,20 @@ public class MovieModel {
      * Updates the genre of the movie.
      *
      * @param genre the new genre of the movie.
+     * @throws IllegalArgumentException if the genre is null, empty, or invalid.
      */
     public void setGenre(String genre) {
+        if (genre == null || genre.trim().isEmpty()) {
+            throw new IllegalArgumentException("Movie genre cannot be null or empty.");
+        }
+
+        // Optional: You can check for valid genres if you have a predefined set.
+        // For example, assuming you have an enum or a set of genres:
+        // Set<String> validGenres = Set.of("Action", "Comedy", "Drama", "Horror");
+        // if (!validGenres.contains(genre)) {
+        //     throw new IllegalArgumentException("Invalid genre: " + genre);
+        // }
+
         this.genre = genre;
     }
 
