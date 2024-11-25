@@ -113,7 +113,13 @@ public class ImportHelper {
                 int roomId = Integer.parseInt(values[2]);
                 LocalDateTime screenTime = LocalDateTime.parse(values[3], formatter);
                 String movieName = values[4];
-                tickets.add(new Ticket(ticketId, purchaseDate, roomId, screenTime, movieName));
+                tickets.add(new Ticket(ticketId, purchaseDate, roomId, screenTime, movieName) {
+
+                    @Override
+                    public String getTicketType() {
+                        return "";
+                    }
+                });
             }
         } catch (IOException e) {
             e.printStackTrace();

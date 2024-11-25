@@ -4,16 +4,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #EDF7F6;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ETicketPageView">
+<AnchorPane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #EDF7F6;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TicketController">
     <children>
         <Label fx:id="eTicketTitleLabel" layoutX="225.0" layoutY="24.0" prefHeight="34.0" prefWidth="66.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="E-Ticket" />
         <Button fx:id="backButton" layoutX="444.0" layoutY="360.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: #D3D3D3; -fx-text-fill: #000000;" text="Back" />
-        <Button fx:id="saveButton" layoutX="375.0" layoutY="360.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: #D3D3D3; -fx-text-fill: #000000;" text="Save" />
         <Label fx:id="ticketUniqueIdPromptLabel" layoutX="155.0" layoutY="114.0" text="Ticket unique id:" />
-        <Label fx:id="purchasedDatePromptLabel" layoutX="156.0" layoutY="161.0" text="purchased date:" />
-        <Label fx:id="showtimeInfoPromptLabel" layoutX="165.0" layoutY="209.0" text="showtime info:" />
+        <Label fx:id="purchasedDatePromptLabel" layoutX="156.0" layoutY="161.0" text="Purchased date:" />
+        <Label fx:id="showtimeInfoPromptLabel" layoutX="206.0" layoutY="191.0" text="Showtime info:" />
         <Label fx:id="ticketUniqueIdLabel" layoutX="252.0" layoutY="114.0" prefHeight="19.0" prefWidth="94.0" style="-fx-border-color: black; -fx-border-width: 1;" />
         <Label fx:id="purchasedDateLabel" layoutX="252.0" layoutY="161.0" prefHeight="19.0" prefWidth="94.0" style="-fx-border-color: black; -fx-border-width: 1;" />
-        <Label fx:id="showtimeInfoLabel" layoutX="253.0" layoutY="209.0" prefHeight="19.0" prefWidth="93.0" style="-fx-border-color: black; -fx-border-width: 1;" />
+        <Label fx:id="showtimeInfoLabel" layoutX="59.0" layoutY="219.0" prefHeight="19.0" prefWidth="93.0" text="Movie Name" />
+        <Label fx:id="movieNameInfoLabel" layoutX="58.0" layoutY="256.0" prefHeight="78.0" prefWidth="94.0" style="-fx-border-color: black;" />
+        <Label fx:id="dateTimeLabel" layoutX="193.0" layoutY="219.0" prefHeight="19.0" prefWidth="94.0" text="Date/Time" />
+        <Label fx:id="dateTimeInfoLabel" layoutX="193.0" layoutY="256.0" prefHeight="78.0" prefWidth="94.0" style="-fx-border-color: black;" />
+        <Label fx:id="screeningRoomLabel" layoutX="328.0" layoutY="219.0" prefHeight="19.0" prefWidth="94.0" text="Screening Room" />
+        <Label fx:id="screeningRoomInfoLabel" layoutX="332.0" layoutY="256.0" prefHeight="78.0" prefWidth="94.0" style="-fx-border-color: black;" />
+      <Button id="ticketSaveButton" fx:id="ticketSaveButton" layoutX="379.0" layoutY="360.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: #D3D3D3; -fx-text-fill: #000000;" text="Save" />
     </children>
 </AnchorPane>
