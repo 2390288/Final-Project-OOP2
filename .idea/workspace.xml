@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2fccb79-1d1c-4994-a064-c8895731e858" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/TicketController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Model/DigitalTicket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Model/PhysicalTicket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/ScreeningRoomController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/final_project/Modify-Screening-Room-View.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/final_project/Screening-Room-View.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/final_project/Model/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Model/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/final_project/helpers/ImportHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/helpers/ImportHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/final_project/e-ticket-page-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/final_project/e-ticket-page-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/final_project/Model/ScreeningRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Model/ScreeningRoom.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +46,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Feature/tickets",
+    "git-widget-placeholder": "Feature/ScreeningRooms",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/adm1/Documents/OOP2/assss4/OOP2-ASS4",
