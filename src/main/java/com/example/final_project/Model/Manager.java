@@ -4,6 +4,9 @@ public class Manager {
     private int managerId; // Primary Key
     private int userId; // Foreign Key
 
+    public Manager(int managerId, String name) {
+    }
+
     // Getters and Setters
     public int getManagerId() {
         return managerId;
