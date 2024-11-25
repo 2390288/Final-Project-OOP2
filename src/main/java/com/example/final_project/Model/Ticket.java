@@ -2,54 +2,78 @@ package com.example.final_project.Model;
 
 import java.time.LocalDateTime;
 
-public class Ticket {
-    private int ticketId; // Primary Key
-    private LocalDateTime purchaseDate;
-    private int roomId; // Foreign Key
-    private LocalDateTime screenTimeDateTime; // Foreign Key
-    private String movieName; // Foreign Key
+public abstract class Ticket {
+    private String ticketId;
+    private LocalDateTime purchaseDateTime;
+    private Showtime showtime;
+    private String clientId;
 
-    public Ticket(int ticketId, LocalDateTime purchaseDate, int roomId, LocalDateTime screenTime, String movieName) {
+    // Constructor with input validation
+    public Ticket(String ticketId, LocalDateTime purchaseDateTime, Showtime showtime, String clientId) {
+        if (ticketId == null || ticketId.isEmpty()) {
+            throw new IllegalArgumentException("Ticket ID cannot be null or empty");
+        }
+        if (purchaseDateTime == null) {
+            throw new IllegalArgumentException("Purchase date/time cannot be null");
+        }
+        if (showtime == null) {
+            throw new IllegalArgumentException("Showtime cannot be null");
+        }
+        if (clientId == null || clientId.isEmpty()) {
+            throw new IllegalArgumentException("Client ID cannot be null or empty");
+        }
+
+        this.ticketId = ticketId;
+        this.purchaseDateTime = purchaseDateTime;
+        this.showtime = showtime;
+        this.clientId = clientId;
     }
 
     // Getters and Setters
-    public int getTicketId() {
+    public String getTicketId() {
         return ticketId;
     }
 
-    public void setTicketId(int ticketId) {
+    public void setTicketId(String ticketId) {
+        if (ticketId == null || ticketId.isEmpty()) {
+            throw new IllegalArgumentException("Ticket ID cannot be null or empty");
+        }
         this.ticketId = ticketId;
     }
 
-    public LocalDateTime getPurchaseDate() {
-        return purchaseDate;
+    public LocalDateTime getPurchaseDateTime() {
+        return purchaseDateTime;
     }
 
-    public void setPurchaseDate(LocalDateTime purchaseDate) {
-        this.purchaseDate = purchaseDate;
+    public void setPurchaseDateTime(LocalDateTime purchaseDateTime) {
+        if (purchaseDateTime == null) {
+            throw new IllegalArgumentException("Purchase date/time cannot be null");
+        }
+        this.purchaseDateTime = purchaseDateTime;
     }
 
-    public int getRoomId() {
-        return roomId;
+    public Showtime getShowtime() {
+        return showtime;
     }
 
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
+    public void setShowtime(Showtime showtime) {
+        if (showtime == null) {
+            throw new IllegalArgumentException("Showtime cannot be null");
+        }
+        this.showtime = showtime;
     }
 
-    public LocalDateTime getScreenTimeDateTime() {
-        return screenTimeDateTime;
+    public String getClientId() {
+        return clientId;
     }
 
-    public void setScreenTimeDateTime(LocalDateTime screenTimeDateTime) {
-        this.screenTimeDateTime = screenTimeDateTime;
+    public void setClientId(String clientId) {
+        if (clientId == null || clientId.isEmpty()) {
+            throw new IllegalArgumentException("Client ID cannot be null or empty");
+        }
+        this.clientId = clientId;
     }
 
-    public String getMovieName() {
-        return movieName;
-    }
-
-    public void setMovieName(String movieName) {
-        this.movieName = movieName;
-    }
+    // Abstract method to be implemented by subclasses
+    public abstract String getTicketType();
 }
