@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d2fccb79-1d1c-4994-a064-c8895731e858" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/TicketController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Model/DigitalTicket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Model/PhysicalTicket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/final_project/manager-showtime-page-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/final_project/Model/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Model/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/final_project/helpers/ImportHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/helpers/ImportHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/final_project/e-ticket-page-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/final_project/e-ticket-page-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +17,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-  <option value="FxmlFile" />
-        <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -50,10 +44,10 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Feature/tickets",
+    "git-widget-placeholder": "feature/Manager__ShowTimeView",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/adm1/Documents/OOP2/assss4/OOP2-ASS4",
+    "last_opened_file_path": "C:/OOP2/Final project/Final Project/src/main/resources/com/example/final_project",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -70,8 +64,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.419" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.419" />
       </set>
     </attachedChunks>
   </component>
@@ -84,7 +78,6 @@
       <option name="presentableId" value="Default" />
       <updated>1732110583054</updated>
       <workItem from="1732110584188" duration="513000" />
-      <workItem from="1732551021351" duration="6792000" />
     </task>
     <servers />
   </component>
