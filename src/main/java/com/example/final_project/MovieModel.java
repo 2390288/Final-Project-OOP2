@@ -1,14 +1,11 @@
 package com.example.final_project;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Represents a movie in the Movie Theatre Management System.
  * This model contains the essential details about a movie,
  * including its title and genre.
  */
-public class ManagerMovieModel {
+public class MovieModel {
 
     /**
      * The title of the movie.
@@ -29,7 +26,7 @@ public class ManagerMovieModel {
      * @param title the title of the movie.
      * @param genre the genre of the movie.
      */
-    public ManagerMovieModel(String title, String genre) {
+    public MovieModel(String title, String genre) {
         this.title = title;
         this.genre = genre;
         // Uncomment to initialize showtimes if needed:
