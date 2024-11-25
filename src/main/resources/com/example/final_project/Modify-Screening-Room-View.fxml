@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label id="ModifyScreeningRoomMovieNameLabel" layoutX="238.0" layoutY="84.0" prefHeight="18.0" prefWidth="96.0" text="Movie Name" />
+      <TextField id="modifyScreeningRoomMovieNameTextField" layoutX="207.0" layoutY="131.0" />
+      <Label id="modifyScreeningRoomScreeningRoomLabel" layoutX="238.0" layoutY="200.0" text="Screening Room" />
+      <TextField id="modifyScreeningRoomScreeningRoomTextField" layoutX="207.0" layoutY="251.0" />
+      <Button id="modifyScreeningRoomSaveButton" layoutX="348.0" layoutY="338.0" mnemonicParsing="false" text="Save" />
+      <Button id="modifyScreeningRoomBackButton" layoutX="145.0" layoutY="338.0" mnemonicParsing="false" text="Back" />
+   </children>
+</AnchorPane>
