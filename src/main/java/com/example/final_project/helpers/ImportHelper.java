@@ -15,12 +15,20 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A helper class to load various entities (Users, Clients, Managers, DigitalTicket, Movie, ScreeningRoom and Showtime) from CSV files.
+ * The files are expected to be located in a specific folder on the local system.
+ */
 public class ImportHelper {
 
-    // Folder containing the CSV files
+    // Folder containing the CSV sheet
     private static final String CSV_FOLDER = "C:\\Users\\adm1\\OneDrive - Champlain Regional College\\OOP2\\Final Project\\excell\\";
 
-    // Load Users from the CSV
+    /**
+     * Loads a list of users from the "userData.csv" file.
+     *
+     * @return a list of User objects loaded from the CSV file.
+     */
     public static List<User> loadUsersFromCSV() {
         List<User> users = new ArrayList<>();
         String filePath = CSV_FOLDER + "userData.csv";
@@ -41,7 +49,11 @@ public class ImportHelper {
         return users;
     }
 
-    // Load Clients from the CSV
+    /**
+     * Loads a list of clients from the "clientData.csv" file.
+     *
+     * @return a list of Client objects loaded from the CSV file.
+     */
     public static List<Client> loadClientsFromCSV() {
         List<Client> clients = new ArrayList<>();
         String filePath = CSV_FOLDER + "clientData.csv";
@@ -65,7 +77,12 @@ public class ImportHelper {
         return clients;
     }
 
-    // Load Managers from the CSV
+    /**
+     * Loads a list of managers from the "managerData.csv" file.
+     * Only valid manager records are loaded, and invalid records are skipped.
+     *
+     * @return a list of Manager objects loaded from the CSV file.
+     */
     public static List<Manager> loadManagersFromCSV() {
         List<Manager> managers = new ArrayList<>();
         String filePath = CSV_FOLDER + "managerData.csv";
@@ -94,7 +111,11 @@ public class ImportHelper {
         return managers;
     }
 
-    // Load Screening Rooms from the CSV
+    /**
+     * Loads a list of screening rooms from the "screeningRoomData.csv" file.
+     *
+     * @return a list of ScreeningRoom objects loaded from the CSV file.
+     */
     public static List<ScreeningRoom> loadRoomsFromCSV() {
         List<ScreeningRoom> rooms = new ArrayList<>();
         String filePath = CSV_FOLDER + "screeningRoomData.csv";
@@ -113,7 +134,11 @@ public class ImportHelper {
         return rooms;
     }
 
-    // Load Showtimes from the CSV
+    /**
+     * Loads a list of showtimes from the "showtimeData.csv" file.
+     *
+     * @return a list of Showtime objects loaded from the CSV file.
+     */
     public static List<Showtime> loadShowtimesFromCSV() {
         List<Showtime> showtimes = new ArrayList<>();
         String filePath = CSV_FOLDER + "showtimeData.csv";
@@ -135,7 +160,11 @@ public class ImportHelper {
         return showtimes;
     }
 
-    // Load Tickets from the CSV
+    /**
+     * Loads a list of tickets from the "ticketData.csv" file.
+     *
+     * @return a list of Ticket objects loaded from the CSV file.
+     */
     public static List<Ticket> loadTicketsFromCSV() {
         List<Ticket> tickets = new ArrayList<>();
         String filePath = CSV_FOLDER + "ticketData.csv";
