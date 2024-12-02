@@ -9,12 +9,15 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-      <children>
+    <children>
 
-          <Button fx:id="logInButton" layoutX="94.0" layoutY="129.0" onAction="#onLogInButtonClick" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: #0049B7; -fx-text-fill: white;" text="Log In" />
+        <!-- Log In Button, anchored to the left and top -->
+        <Button fx:id="logInButton" onAction="#onLogInButtonClick" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="129.0" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #0049B7; -fx-text-fill: white;" text="Log In" />
 
-          <Button fx:id="signUpButton" layoutX="174.0" layoutY="129.0" onAction="#onSignUpButtonClick" style="-fx-background-color: #FF1D58; -fx-text-fill: white;" text="Sign Up" />
+        <!-- Sign Up Button, anchored to the left and top -->
+        <Button fx:id="signUpButton" onAction="#onSignUpButtonClick" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="129.0" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #FF1D58; -fx-text-fill: white;" text="Sign Up" />
 
-          <Label fx:id="entryPageTitle" layoutX="31.0" layoutY="40.0" prefHeight="30.0" prefWidth="259.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Welcome to the Entry Page" />
-      </children>
+        <!-- Entry Page Title Label, anchored to the left and top -->
+        <Label fx:id="entryPageTitle" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="40.0" prefHeight="30.0" prefWidth="259.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Welcome to the Entry Page" />
+    </children>
 </AnchorPane>

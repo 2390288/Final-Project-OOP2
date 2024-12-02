@@ -7,4 +7,6 @@ module com.example.final_project {
     exports com.example.final_project;
     exports com.example.final_project.Model;
     opens com.example.final_project.Model to javafx.fxml;
+    exports com.example.final_project.Controller;
+    opens com.example.final_project.Controller to javafx.fxml;
 }

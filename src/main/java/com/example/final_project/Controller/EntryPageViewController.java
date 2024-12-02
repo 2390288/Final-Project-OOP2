@@ -35,7 +35,7 @@ public class EntryPageViewController {
      */
     @FXML
     private void onLogInButtonClick(ActionEvent event) {
-        loadView("login-page-view.fxml", "Login Page");
+        loadView("/com/example/final_project/login-page-view.fxml", "Login Page");
     }
 
     /**
@@ -46,7 +46,7 @@ public class EntryPageViewController {
      */
     @FXML
     private void onSignUpButtonClick(ActionEvent event) {
-        loadView("Client-register-view.fxml", "Sign Up Page");
+        loadView("/com/example/final_project/Client-register-view.fxml", "Sign Up Page");
     }
 
     /**
