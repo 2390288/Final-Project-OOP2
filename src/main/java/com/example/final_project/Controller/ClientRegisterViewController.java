@@ -1,9 +1,14 @@
 package com.example.final_project.Controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
  * Controller for the Client Register View.
@@ -25,19 +30,10 @@ public class ClientRegisterViewController {
     private Button registerButton; // Button to trigger registration
 
     /**
-     * Initializes the controller.
-     * Can be used to set up initial states, add listeners, etc.
-     */
-    @FXML
-    public void initialize() {
-        // Add event listener for the register button
-        registerButton.setOnAction(event -> onRegisterButtonClick());
-    }
-
-    /**
      * Handles the register button click event.
      * Retrieves user input and performs registration logic.
      */
+    @FXML
     private void onRegisterButtonClick() {
         // Retrieve input values
         String username = usernameRegisterTextBox.getText().trim();
@@ -57,6 +53,11 @@ public class ClientRegisterViewController {
 
         // Simulate registration logic (this can be replaced with actual logic, e.g., API calls)
         showConfirmation("Registration Successful", "Welcome, " + username + "!");
+
+        // After successful registration, open the customer showtime page
+        openCustomerShowtimePage();
+
+        // Clear the input fields
         clearFields();
     }
 
@@ -103,5 +104,24 @@ public class ClientRegisterViewController {
         alert.setTitle(title);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    /**
+     * Opens the customer showtime page.
+     */
+    private void openCustomerShowtimePage() {
+        try {
+            // Load the FXML for the customer showtime page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/final_project/customer-showtime-page-view.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) registerButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showError("Error", "Failed to load the customer showtime page.");
+        }
     }
 }

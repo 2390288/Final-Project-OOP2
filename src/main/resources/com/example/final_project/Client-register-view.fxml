@@ -8,48 +8,48 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox alignment="CENTER" prefHeight="103.0" prefWidth="317.0" spacing="20.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.final_project.Controller.ClientRegisterViewController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-  </padding>
-   <Label text="Register" />
-   <HBox prefHeight="100.0" prefWidth="200.0">
-      <children>
-         <Label text="Username:" />
-         <TextField fx:id="usernameRegisterTextBox">
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <HBox.margin>
-               <Insets left="10.0" />
-            </HBox.margin>
-         </TextField>
-      </children>
-   </HBox>
-   <HBox prefHeight="100.0" prefWidth="200.0">
-      <children>
-         <Label text="Email:" />
-         <TextField fx:id="emailRegisterTextBox">
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <HBox.margin>
-               <Insets left="34.0" />
-            </HBox.margin>
-         </TextField>
-      </children>
-   </HBox>
-   <HBox prefHeight="100.0" prefWidth="200.0">
-      <children>
-         <Label text="Password:" />
-         <TextField fx:id="passwordRegisterTextBox">
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <HBox.margin>
-               <Insets left="12.0" />
-            </HBox.margin>
-         </TextField>
-      </children>
-   </HBox>
-   <Button fx:id="registerButton" mnemonicParsing="false" text="Register!" />
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <Label text="Register" />
+    <HBox prefHeight="100.0" prefWidth="200.0">
+        <children>
+            <Label text="Username:" />
+            <TextField fx:id="usernameRegisterTextBox">
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+                <HBox.margin>
+                    <Insets left="10.0" />
+                </HBox.margin>
+            </TextField>
+        </children>
+    </HBox>
+    <HBox prefHeight="100.0" prefWidth="200.0">
+        <children>
+            <Label text="Email:" />
+            <TextField fx:id="emailRegisterTextBox">
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+                <HBox.margin>
+                    <Insets left="34.0" />
+                </HBox.margin>
+            </TextField>
+        </children>
+    </HBox>
+    <HBox prefHeight="100.0" prefWidth="200.0">
+        <children>
+            <Label text="Password:" />
+            <TextField fx:id="passwordRegisterTextBox">
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+                <HBox.margin>
+                    <Insets left="12.0" />
+                </HBox.margin>
+            </TextField>
+        </children>
+    </HBox>
+    <Button fx:id="registerButton" mnemonicParsing="false" text="Register!" onAction="#onRegisterButtonClick"/>
 </VBox>

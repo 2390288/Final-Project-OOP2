@@ -7,18 +7,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="516.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.final_project.CustomerShowtimePageView" style="-fx-background-color: #EDF7F6;">
+<AnchorPane prefHeight="400.0" prefWidth="516.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.final_project.Controller.CustomerShowtimePageView" style="-fx-background-color: #EDF7F6;">
    <children>
       <ListView fx:id="showtimeListView" layoutX="274.0" layoutY="80.0" prefHeight="239.0" prefWidth="182.0" />
       <ListView fx:id="movieTitleListView" layoutX="66.0" layoutY="80.0" prefHeight="239.0" prefWidth="182.0" />
       <Label fx:id="upcomingMovieTitleLabel" layoutX="193.0" layoutY="26.0" prefHeight="33.0" prefWidth="146.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Upcoming Movies" />
 
-      <!-- Log Out Button -->
       <Button fx:id="logOutButton" layoutX="365.0" layoutY="361.0" mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-text-fill: #000000;" text="Log out" />
-
-      <!-- Purchase Button -->
       <Button fx:id="purchasedButton" layoutX="431.0" layoutY="361.0" mnemonicParsing="false" style="-fx-background-color: #32de84; -fx-text-fill: #000000;" text="Purchase" />
-
       <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="365.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../../Pictures/Screenshots/5828768-200.png" />

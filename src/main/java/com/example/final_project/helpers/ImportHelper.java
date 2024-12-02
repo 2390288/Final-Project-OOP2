@@ -1,40 +1,28 @@
 package com.example.final_project.helpers;
 
-import com.example.final_project.Model.Client;
-import com.example.final_project.Model.Manager;
-import com.example.final_project.Model.ScreeningRoom;
-import com.example.final_project.Model.Showtime;
-import com.example.final_project.Model.Ticket;
-import com.example.final_project.Model.User;
+import com.example.final_project.Model.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A helper class for importing data into the application.
- *
- * This class provides methods to read data from CSV files and parse it into various entities
- * used in the application. Each method ensures input validation and handles errors gracefully
- * to prevent invalid data from being processed. This is especially useful for managing
- * application data in a JavaFX project, where accurate and reliable data is crucial for
- * ensuring smooth application functionality.
+ * A helper class to load various entities (Users, Clients, Managers, DigitalTicket, Movie, ScreeningRoom, and Showtime) from CSV files.
+ * The files are expected to be located in a specific folder on the local system.
  */
 public class ImportHelper {
 
-    // The folder containing all the CSV files
+    // Folder containing the CSV sheet
     private static final String CSV_FOLDER = "C:\\Users\\adm1\\OneDrive - Champlain Regional College\\OOP2\\Final Project\\excell\\";
 
     /**
-     * Reads user data from a CSV file and returns a list of valid User objects.
-     * Validates input to ensure User ID, username, and password are non-null and correctly formatted.
+     * Loads a list of users from the "userData.csv" file.
      *
-     * @return a list of User objects, or an empty list if the file is invalid or empty.
+     * @return a list of User objects loaded from the CSV file.
      */
     public static List<User> loadUsersFromCSV() {
         List<User> users = new ArrayList<>();
@@ -44,18 +32,10 @@ public class ImportHelper {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
-                if (values.length >= 3) {
-                    try {
-                        int userId = validatePositiveInteger(values[0].trim(), "User ID");
-                        String username = validateNonEmptyString(values[1].trim(), "Username");
-                        String password = validateNonEmptyString(values[2].trim(), "Password");
-                        users.add(new User(userId, username, password));
-                    } catch (IllegalArgumentException e) {
-                        System.err.println("Validation error for user record: " + line + " - " + e.getMessage());
-                    }
-                } else {
-                    System.err.println("Invalid user data format: " + line);
-                }
+                int userId = Integer.parseInt(values[0].trim());
+                String username = values[1].trim();
+                String password = values[2].trim();
+                users.add(new User(userId, username, password));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -65,10 +45,9 @@ public class ImportHelper {
     }
 
     /**
-     * Reads client data from a CSV file and returns a list of valid Client objects.
-     * Validates input to ensure Client ID, User ID, email, sign-up date, and name are properly formatted.
+     * Loads a list of clients from the "clientData.csv" file.
      *
-     * @return a list of Client objects, or an empty list if the file is invalid or empty.
+     * @return a list of Client objects loaded from the CSV file.
      */
     public static List<Client> loadClientsFromCSV() {
         List<Client> clients = new ArrayList<>();
@@ -79,20 +58,12 @@ public class ImportHelper {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
-                if (values.length >= 5) {
-                    try {
-                        int clientId = validatePositiveInteger(values[0].trim(), "Client ID");
-                        int userId = validatePositiveInteger(values[1].trim(), "User ID");
-                        String email = validateNonEmptyString(values[2].trim(), "Email");
-                        LocalDateTime signUpDate = validateDateTime(values[3].trim(), formatter, "Sign-Up Date");
-                        String name = validateNonEmptyString(values[4].trim(), "Name");
-                        clients.add(new Client(clientId, userId, email, signUpDate, name));
-                    } catch (IllegalArgumentException e) {
-                        System.err.println("Validation error for client record: " + line + " - " + e.getMessage());
-                    }
-                } else {
-                    System.err.println("Invalid client data format: " + line);
-                }
+                int clientId = Integer.parseInt(values[0].trim());
+                int userId = Integer.parseInt(values[1].trim());
+                String email = values[2].trim();
+                LocalDateTime signUpDate = LocalDateTime.parse(values[3].trim(), formatter);
+                String name = values[4].trim();
+                clients.add(new Client(clientId, userId, email, signUpDate, name));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -101,57 +72,145 @@ public class ImportHelper {
         return clients;
     }
 
-    // Other methods for managers, screening rooms, etc. follow the same pattern...
-
     /**
-     * Helper method to validate a positive integer.
+     * Loads a list of managers from the "managerData.csv" file.
+     * Only valid manager records are loaded, and invalid records are skipped.
      *
-     * @param value     the string representation of the integer to validate.
-     * @param fieldName the name of the field being validated for error reporting.
-     * @return the validated positive integer.
-     * @throws IllegalArgumentException if the value is not a valid positive integer.
+     * @return a list of Manager objects loaded from the CSV file.
      */
-    private static int validatePositiveInteger(String value, String fieldName) {
-        try {
-            int parsedValue = Integer.parseInt(value);
-            if (parsedValue <= 0) {
-                throw new IllegalArgumentException(fieldName + " must be a positive integer.");
+    public static List<Manager> loadManagersFromCSV() {
+        List<Manager> managers = new ArrayList<>();
+        String filePath = CSV_FOLDER + "managerData.csv";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                if (values.length >= 3) {
+                    try {
+                        int managerId = Integer.parseInt(values[0].trim());
+                        int userId = Integer.parseInt(values[1].trim());
+                        String name = values[2].trim();
+                        managers.add(new Manager(managerId, userId));
+                    } catch (NumberFormatException e) {
+                        System.err.println("Error parsing manager data: " + line);
+                    }
+                } else {
+                    System.err.println("Invalid line in CSV: " + line);
+                }
             }
-            return parsedValue;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(fieldName + " must be a valid integer.");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        return managers;
     }
 
     /**
-     * Helper method to validate a non-empty string.
+     * Loads a list of screening rooms from the "screeningRoomData.csv" file.
      *
-     * @param value     the string to validate.
-     * @param fieldName the name of the field being validated for error reporting.
-     * @return the validated non-empty string.
-     * @throws IllegalArgumentException if the value is null or empty.
+     * @return a list of ScreeningRoom objects loaded from the CSV file.
      */
-    private static String validateNonEmptyString(String value, String fieldName) {
-        if (value == null || value.isEmpty()) {
-            throw new IllegalArgumentException(fieldName + " cannot be empty.");
+    public static List<ScreeningRoom> loadRoomsFromCSV() {
+        List<ScreeningRoom> rooms = new ArrayList<>();
+        String filePath = CSV_FOLDER + "screeningRoomData.csv";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                int roomId = Integer.parseInt(values[0].trim());
+                rooms.add(new ScreeningRoom(roomId));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return value;
+
+        return rooms;
     }
 
     /**
-     * Helper method to validate a date-time string.
+     * Loads a list of showtimes from the "showtimeData.csv" file.
      *
-     * @param value     the date-time string to validate.
-     * @param formatter the formatter for parsing the date-time string.
-     * @param fieldName the name of the field being validated for error reporting.
-     * @return the parsed LocalDateTime object.
-     * @throws IllegalArgumentException if the value cannot be parsed as a date-time.
+     * @return a list of Showtime objects loaded from the CSV file.
      */
-    private static LocalDateTime validateDateTime(String value, DateTimeFormatter formatter, String fieldName) {
-        try {
-            return LocalDateTime.parse(value, formatter);
-        } catch (DateTimeParseException e) {
-            throw new IllegalArgumentException(fieldName + " must be in the format " + formatter.toString());
+    public static List<Showtime> loadShowtimesFromCSV() {
+        List<Showtime> showtimes = new ArrayList<>();
+        String filePath = CSV_FOLDER + "showtimeData.csv";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                int movieId = Integer.parseInt(values[0].trim());
+                int roomId = Integer.parseInt(values[1].trim());
+                LocalDateTime screenTime = LocalDateTime.parse(values[2].trim(), formatter);
+                showtimes.add(new Showtime(movieId, roomId, screenTime));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        return showtimes;
+    }
+
+    /**
+     * Loads a list of movies from the "movieData.csv" file.
+     * The CSV file is expected to have the following columns: movieName, movieID, movieGenre.
+     *
+     * @return a list of Movie objects loaded from the CSV file.
+     */
+    public static List<Movie> loadMoviesFromCSV() {
+        List<Movie> movies = new ArrayList<>();
+        String filePath = CSV_FOLDER + "movieData.csv";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                // Split by comma and trim extra spaces.
+                String[] values = line.split(",");
+                if (values.length >= 3) {
+                    // Parse the movieId from the CSV (assuming it's the second column)
+                    int movieId = Integer.parseInt(values[1].trim());
+                    String movieName = values[0].trim();
+                    String movieGenre = values[2].trim();
+
+                    // Create a Movie object with all the required parameters
+                    movies.add(new Movie(movieId, movieName, movieGenre));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return movies;
+    }
+    /**
+     * Loads a list of tickets from the "ticketData.csv" file.
+     *
+     * @return a list of Ticket objects loaded from the CSV file.
+     */
+    public static List<Ticket> loadTicketsFromCSV() {
+        List<Ticket> tickets = new ArrayList<>();
+        String filePath = CSV_FOLDER + "ticketData.csv";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                int ticketId = Integer.parseInt(values[0].trim());
+                LocalDateTime purchaseDate = LocalDateTime.parse(values[1].trim(), formatter);
+                int roomId = Integer.parseInt(values[2].trim());
+                LocalDateTime screenTime = LocalDateTime.parse(values[3].trim(), formatter);
+                String movieName = values[4].trim();
+                tickets.add(new Ticket(ticketId, purchaseDate, roomId, screenTime, movieName));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return tickets;
     }
 }
