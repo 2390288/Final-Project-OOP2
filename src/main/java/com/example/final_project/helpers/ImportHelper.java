@@ -1,11 +1,6 @@
 package com.example.final_project.helpers;
 
-import com.example.final_project.Model.Client;
-import com.example.final_project.Model.Manager;
-import com.example.final_project.Model.ScreeningRoom;
-import com.example.final_project.Model.Showtime;
-import com.example.final_project.Model.Ticket;
-import com.example.final_project.Model.User;
+import com.example.final_project.Model.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -160,6 +155,35 @@ public class ImportHelper {
         return showtimes;
     }
 
+    /**
+     * Loads a list of movies from the "movieData.csv" file.
+     * The CSV file is expected to have the following columns: movieName, movieID, movieGenre.
+     *
+     * @return a list of Movie objects loaded from the CSV file.
+     */
+    public static List<Movie> loadMoviesFromCSV() {
+        List<Movie> movies = new ArrayList<>();
+        String filePath = CSV_FOLDER + "movieData.csv";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                // Split by comma and trim extra spaces.
+                String[] values = line.split(",");
+                if (values.length >= 3) {
+                    String movieName = values[0].trim();
+                    String movieGenre = values[2].trim();
+
+                    // Create a new Movie object and add it to the list
+                    movies.add(new Movie(movieName, movieGenre));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return movies;
+    }
     /**
      * Loads a list of tickets from the "ticketData.csv" file.
      *

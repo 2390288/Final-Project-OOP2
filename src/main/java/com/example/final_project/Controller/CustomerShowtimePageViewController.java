@@ -71,8 +71,8 @@ public class CustomerShowtimePageViewController {
      */
     private void loadShowtimesAndMovies() {
         // Fetch movie and showtime data (assuming you have methods to fetch showtimes and movies)
-        List<Showtime> showtimes = ImportHelper.loadShowtimesFromCSV();  // Adjust method as necessary
-        List<Movie> movies = ImportHelper.loadMoviesFromCSV();  
+        List<Showtime> showtimes = ImportHelper.loadShowtimesFromCSV();
+        List<Movie> movies = ImportHelper.loadMoviesFromCSV();
 
         // Add movie titles to the ListView
         for (Movie movie : movies) {
