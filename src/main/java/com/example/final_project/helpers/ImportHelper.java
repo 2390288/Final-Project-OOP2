@@ -125,7 +125,7 @@ public class ImportHelper {
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 int roomId = Integer.parseInt(values[0].trim());
-                rooms.add(new ScreeningRoom(roomId));
+                //rooms.add(new ScreeningRoom(roomId));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -179,7 +179,7 @@ public class ImportHelper {
                 int roomId = Integer.parseInt(values[2].trim());
                 LocalDateTime screenTime = LocalDateTime.parse(values[3].trim(), formatter);
                 String movieName = values[4].trim();
-                tickets.add(new Ticket(ticketId, purchaseDate, roomId, screenTime, movieName));
+                //tickets.add(new Ticket(ticketId, purchaseDate, roomId, screenTime, movieName));
             }
         } catch (IOException e) {
             e.printStackTrace();
