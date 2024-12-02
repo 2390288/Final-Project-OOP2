@@ -171,11 +171,13 @@ public class ImportHelper {
                 // Split by comma and trim extra spaces.
                 String[] values = line.split(",");
                 if (values.length >= 3) {
+                    // Parse the movieId from the CSV (assuming it's the second column)
+                    int movieId = Integer.parseInt(values[1].trim());
                     String movieName = values[0].trim();
                     String movieGenre = values[2].trim();
 
-                    // Create a new Movie object and add it to the list
-                    movies.add(new Movie(movieName, movieGenre));
+                    // Create a Movie object with all the required parameters
+                    movies.add(new Movie(movieId, movieName, movieGenre));
                 }
             }
         } catch (IOException e) {

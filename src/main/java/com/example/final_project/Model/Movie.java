@@ -6,14 +6,19 @@ import java.util.List;
 /**
  * Represents a movie in the Movie Theatre Management System.
  * This model contains the essential details about a movie,
- * including its title, genre, and showtimes.
+ * including its movie name, genre, and showtimes.
  */
 public class Movie {
 
     /**
-     * The title of the movie.
+     * The unique identifier for the movie.
      */
-    private String title;
+    private int movieId;
+
+    /**
+     * The display name of the movie, which is now the primary title of the movie.
+     */
+    private String movieName;
 
     /**
      * The genre of the movie.
@@ -26,38 +31,61 @@ public class Movie {
     private List<Showtime> availableShowtimes;
 
     /**
-     * Constructs a new {@code MovieModel} with the specified title and genre.
+     * Constructs a new {@code Movie} with the specified ID, movieName, and genre.
      *
-     * @param title the title of the movie.
+     * @param movieId the unique ID of the movie.
+     * @param movieName the display name of the movie.
      * @param genre the genre of the movie.
-     * @throws IllegalArgumentException if title or genre is null or empty.
+     * @throws IllegalArgumentException if movieName or genre is null or empty.
      */
-    public Movie(String title, String genre) {
-        setTitle(title);
+    public Movie(int movieId, String movieName, String genre) {
+        setMovieId(movieId);
+        setMovieName(movieName);
         setGenre(genre);
         this.availableShowtimes = new ArrayList<>();
     }
 
     /**
-     * Retrieves the title of the movie.
+     * Retrieves the unique ID of the movie.
      *
-     * @return the title of the movie.
+     * @return the unique ID of the movie.
      */
-    public String getTitle() {
-        return title;
+    public int getMovieId() {
+        return movieId;
     }
 
     /**
-     * Updates the title of the movie.
+     * Updates the unique ID of the movie.
      *
-     * @param title the new title of the movie.
-     * @throws IllegalArgumentException if the title is null or empty.
+     * @param movieId the new ID of the movie.
      */
-    public void setTitle(String title) {
-        if (title == null || title.trim().isEmpty()) {
-            throw new IllegalArgumentException("Movie title cannot be null or empty.");
+    public void setMovieId(int movieId) {
+        if (movieId <= 0) {
+            throw new IllegalArgumentException("Movie ID must be a positive integer.");
         }
-        this.title = title;
+        this.movieId = movieId;
+    }
+
+    /**
+     * Retrieves the movieName of the movie (for display purposes).
+     *
+     * @return the display name of the movie.
+     */
+    public String getMovieName() {
+        return movieName;
+    }
+
+    /**
+     * Updates the movieName of the movie.
+     *
+     * @param movieName the new display name of the movie.
+     * @throws IllegalArgumentException if the movieName is null or empty.
+     */
+    public void setMovieName(String movieName) {
+        if (movieName == null || movieName.trim().isEmpty()) {
+            throw new IllegalArgumentException("Movie name cannot be null or empty.");
+        }
+        this.movieName = movieName;
     }
 
     /**
@@ -113,19 +141,5 @@ public class Movie {
             throw new IllegalArgumentException("Showtime cannot be null.");
         }
         this.availableShowtimes.remove(showtime);
-    }
-
-    /**
-     * Returns a string representation of the movie object for debugging purposes.
-     *
-     * @return a string containing the movie's title, genre, and showtimes.
-     */
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "title='" + title + '\'' +
-                ", genre='" + genre + '\'' +
-                ", availableShowtimes=" + availableShowtimes +
-                '}';
     }
 }

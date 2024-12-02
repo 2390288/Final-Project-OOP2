@@ -70,20 +70,24 @@ public class CustomerShowtimePageViewController {
      * Loads the showtimes and movie titles into the ListView from the ImportHelper.
      */
     private void loadShowtimesAndMovies() {
-        // Fetch movie and showtime data (assuming you have methods to fetch showtimes and movies)
+        // Fetch movie and showtime data
         List<Showtime> showtimes = ImportHelper.loadShowtimesFromCSV();
         List<Movie> movies = ImportHelper.loadMoviesFromCSV();
 
-        // Add movie titles to the ListView
-        for (Movie movie : movies) {
-            movieTitleListView.getItems().add(movie.getTitle());
-        }
-
-        // Add showtimes to the ListView
+        // Create a mapping of movieId to movie title for quick lookup
         for (Showtime showtime : showtimes) {
-            showtimeListView.getItems().add(showtime.getTime().toString());
+            for (Movie movie : movies) {
+                // Match the movieId from showtime with movie in the list
+                if (showtime.getMovieId() == movie.getMovieId()) {  // Compare movie IDs, not names
+                    // Add movie title and showtime to their respective ListViews
+                    movieTitleListView.getItems().add(movie.getMovieName());
+                    showtimeListView.getItems().add(showtime.getScreenTimeDateTime().toString());
+                    break; // Found a match, no need to continue the inner loop
+                }
+            }
         }
     }
+
 
     /**
      * Handles the log out action.
@@ -92,7 +96,6 @@ public class CustomerShowtimePageViewController {
     private void onLogOut() {
         // Implement the logic for logging out, such as redirecting to the login page
         System.out.println("Logging out...");
-        // You can add code to change the scene or show a confirmation message here
     }
 
     /**
