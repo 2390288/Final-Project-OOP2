@@ -95,7 +95,7 @@ public class TicketController {
     }
 
     // Method to count tickets sold by movie
-    public int countTicketsByMovie(String movieTitle) {
+   /* public int countTicketsByMovie(String movieTitle) {
         int count = 0;
         for (Ticket ticket : tickets) {
             if (ticket.getShowtime().getMovie().getTitle().equals(movieTitle)) {
@@ -103,7 +103,7 @@ public class TicketController {
             }
         }
         return count;
-    }
+    }*/
 
     // Initialize method to set up initial state
     @FXML
