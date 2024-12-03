@@ -2,9 +2,7 @@ package com.example.final_project.helpers;
 
 import com.example.final_project.Model.*;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -70,6 +68,15 @@ public class ImportHelper {
         }
 
         return clients;
+    }
+
+    public static void addClientToCSV(String username, String email, String password) throws IOException {
+        String fileName = "clients.csv"; // Path to your CSV file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+            // Save username, email, and password directly to CSV
+            writer.write(username + "," + email + "," + password);
+            writer.newLine();
+        }
     }
 
     /**

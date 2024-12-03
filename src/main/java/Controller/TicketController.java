@@ -57,8 +57,6 @@ public class TicketController {
         LocalDateTime purchaseDateTime = LocalDateTime.now();
 
         Ticket physicalTicket = new PhysicalTicket(physicalTicketId, purchaseDateTime, showtime, clientId);
-
-        tickets.add(digitalTicket);
     }
 
     // Method to retrieve a ticket by ID
