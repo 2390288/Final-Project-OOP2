@@ -118,9 +118,17 @@ public class ImportHelper {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
+                // Split the line into values (assuming CSV format)
                 String[] values = line.split(",");
-                int roomId = Integer.parseInt(values[0].trim());
-                rooms.add(new ScreeningRoom(roomId));
+
+                // Parse all four parameters for ScreeningRoom
+                int roomId = Integer.parseInt(values[0].trim());  // Assuming the first value is roomId
+                String movieName = values[1].trim();             // Assuming the second value is movieName
+                int movieId = Integer.parseInt(values[2].trim()); // Assuming the third value is movieId
+                int numberOfSeats = Integer.parseInt(values[3].trim()); // Assuming the fourth value is numberOfSeats
+
+                // Add the ScreeningRoom object to the list
+                rooms.add(new ScreeningRoom(roomId, movieName, movieId, numberOfSeats));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -128,6 +136,7 @@ public class ImportHelper {
 
         return rooms;
     }
+
 
     /**
      * Loads a list of showtimes from the "showtimeData.csv" file.
@@ -205,7 +214,12 @@ public class ImportHelper {
                 int roomId = Integer.parseInt(values[2].trim());
                 LocalDateTime screenTime = LocalDateTime.parse(values[3].trim(), formatter);
                 String movieName = values[4].trim();
-                tickets.add(new Ticket(ticketId, purchaseDate, roomId, screenTime, movieName));
+                tickets.add(new Ticket(ticketId, purchaseDate, roomId, screenTime, movieName) {
+                    @Override
+                    public String getTicketType() {
+                        return "";
+                    }
+                });
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -213,4 +227,5 @@ public class ImportHelper {
 
         return tickets;
     }
+
 }

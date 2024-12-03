@@ -1,83 +1,67 @@
 package com.example.final_project.Model;
-
 /**
- * Represents a screening room in a theater or cinema.
- * Each screening room is associated with a unique room ID and the name of a movie being screened.
+ * The ScreeningRoom class represents a movie screening room with associated data such as room ID,
+ * movie name, movie ID, and number of seats.
+ *
+ * This class is intended for use in a JavaFX application, where instances of ScreeningRoom
+ * may be displayed in UI components such as a ListView or TableView.
  */
 public class ScreeningRoom {
     private int roomId;
     private String movieName;
+    private int movieId;
+    private int numberOfSeats;
 
-    /**
-     * Constructs a new ScreeningRoom with the specified room ID and movie name.
-     *
-     * @param roomId the unique identifier for the screening room. Must be greater than zero.
-     * @param movieName the name of the movie being screened. Cannot be null or empty.
-     * @throws IllegalArgumentException if the room ID is less than or equal to zero, or if the movie name is null or empty.
-     */
-    public ScreeningRoom(int roomId, String movieName) {
-        if (roomId <= 0) {
-            throw new IllegalArgumentException("Room ID must be greater than zero");
-        }
-        if (movieName == null || movieName.isEmpty()) {
-            throw new IllegalArgumentException("Movie name cannot be null or empty");
-        }
-
+    // Constructor to initialize a ScreeningRoom object
+    public ScreeningRoom(int roomId, String movieName, int movieId, int numberOfSeats) {
         this.roomId = roomId;
         this.movieName = movieName;
+        this.movieId = movieId;
+        this.numberOfSeats = numberOfSeats;
     }
 
-    /**
-     * Returns the unique room ID of the screening room.
-     *
-     * @return the room ID.
-     */
+    // Getter methods
     public int getRoomId() {
         return roomId;
     }
 
-    /**
-     * Sets the unique room ID for the screening room.
-     *
-     * @param roomId the new room ID. Must be greater than zero.
-     * @throws IllegalArgumentException if the room ID is less than or equal to zero.
-     */
-    public void setRoomId(int roomId) {
-        if (roomId <= 0) {
-            throw new IllegalArgumentException("Room ID must be greater than zero");
-        }
-        this.roomId = roomId;
-    }
-
-    /**
-     * Returns the name of the movie being screened in the room.
-     *
-     * @return the movie name.
-     */
     public String getMovieName() {
         return movieName;
     }
 
-    /**
-     * Sets the name of the movie being screened in the room.
-     *
-     * @param movieName the new movie name. Cannot be null or empty.
-     * @throws IllegalArgumentException if the movie name is null or empty.
-     */
+    public int getMovieId() {
+        return movieId;
+    }
+
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    // Setter methods (if necessary)
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
+
     public void setMovieName(String movieName) {
-        if (movieName == null || movieName.isEmpty()) {
-            throw new IllegalArgumentException("Movie name cannot be null or empty");
-        }
         this.movieName = movieName;
     }
 
-    /**
-     * Returns a string representation of the screening room.
-     *
-     * @return a string in the format "Room {roomId}: {movieName}".
-     */
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
+    }
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
+
+    // Optional: Override toString() to display ScreeningRoom details in a user-friendly format
     @Override
     public String toString() {
-        return "Room " + roomId + ": " + movieName;
+        return "ScreeningRoom{" +
+                "roomId=" + roomId +
+                ", movieName='" + movieName + '\'' +
+                ", movieId=" + movieId +
+                ", numberOfSeats=" + numberOfSeats +
+                '}';
     }
 }
