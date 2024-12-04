@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -73,20 +74,22 @@ public class CustomerShowtimePageViewController {
         List<Showtime> showtimes = ImportHelper.loadShowtimesFromCSV();
         List<Movie> movies = ImportHelper.loadMoviesFromCSV();
 
+        // Create a DateTimeFormatter for formatting the showtime
+        DateTimeFormatter showtimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
         // Create a mapping of movieId to movie title for quick lookup
         for (Showtime showtime : showtimes) {
             for (Movie movie : movies) {
                 // Match the movieId from showtime with movie in the list
                 if (showtime.getMovieId() == movie.getMovieId()) {  // Compare movie IDs, not names
-                    // Add movie title and showtime to their respective ListViews
+                    // Add movie title and formatted showtime to their respective ListViews
                     movieTitleListView.getItems().add(movie.getMovieName());
-                    showtimeListView.getItems().add(showtime.getScreenTimeDateTime().toString());
+                    showtimeListView.getItems().add(showtime.getScreenTimeDateTime().format(showtimeFormatter)); // Format the showtime
                     break; // Found a match, no need to continue the inner loop
                 }
             }
         }
     }
-
 
     /**
      * Handles the log out action.
