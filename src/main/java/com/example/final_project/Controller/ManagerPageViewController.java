@@ -1,6 +1,7 @@
 package com.example.final_project.Controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -12,37 +13,34 @@ import java.io.IOException;
 public class ManagerPageViewController {
 
     // Method to handle the "Movie management" button click event
-    public void handleMovieManagement(ActionEvent event) {
+    @FXML
+    private void handleMovieManagement(ActionEvent event) {
         openNewPage("/com/example/final_project/manager-page-view.fxml");
     }
 
     // Method to handle the "Screening room management" button click event
+    @FXML
     public void handleScreeningRoomManagement(ActionEvent event) {
         openNewPage("/com/example/final_project/Modify-Screening-Room-View.fxml");
     }
 
     // Method to handle the "Showtime management" button click event
+    @FXML
     public void handleShowtimeManagement(ActionEvent event) {
         openNewPage("/com/example/final_project/manager-showtime-page-view.fxml");
     }
 
     // Method to handle the "Result data" button click event
+    @FXML
     public void handleResultData(ActionEvent event) {
         openNewPage("/com/example/final_project/manager-client-view.fxml");
     }
 
     // Method to handle the "Log out" button click event
+    @FXML
     public void handleLogOut(ActionEvent event) {
-        // Optionally show a confirmation or information message before logging out
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Logout");
-        alert.setHeaderText(null);
-        alert.setContentText("You have been logged out.");
-        alert.showAndWait();
-
-        // Close the current window and return to the login screen (or handle logout logic)
-        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        stage.close();
+        // Log out by exiting the system
+        System.exit(0);  // This will terminate the application
     }
 
     // Utility method to load a new FXML page and display it in a new window (stage)

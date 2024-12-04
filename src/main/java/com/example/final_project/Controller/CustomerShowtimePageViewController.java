@@ -79,6 +79,7 @@ public class CustomerShowtimePageViewController {
      * Handles the log out action.
      * Logs the user out and returns to the login screen.
      */
+    @FXML
     private void onLogOut() {
         System.exit(0);
     }
