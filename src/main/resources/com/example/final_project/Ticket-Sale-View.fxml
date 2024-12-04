@@ -14,7 +14,7 @@
       <ListView id="ticketSaleListView" layoutX="28.0" layoutY="142.0" prefHeight="200.0" prefWidth="151.0" />
       <ListView id="ticketSaleMoviesListView" layoutX="217.0" layoutY="142.0" prefHeight="200.0" prefWidth="151.0" />
       <ListView id="ticketSaleShowtimeListView" layoutX="398.0" layoutY="142.0" prefHeight="200.0" prefWidth="151.0" />
-      <Button id="ticketSaleBackButton" layoutX="439.0" layoutY="361.0" mnemonicParsing="false" text="Back" />
-      <Button id="ticketSaleSelectButton" layoutX="507.0" layoutY="361.0" mnemonicParsing="false" text="Select" />
+      <Button id="ticketSaleBackButton" layoutX="515.0" layoutY="361.0" mnemonicParsing="false" text="Back" />
+      <Button id="ticketSaleSelectButton" layoutX="450.0" layoutY="361.0" mnemonicParsing="false" text="Select" />
    </children>
 </AnchorPane>

@@ -9,11 +9,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label id="ModifyScreeningRoomMovieNameLabel" layoutX="97.0" layoutY="94.0" prefHeight="18.0" prefWidth="96.0" text="Movie Name" />
-      <Label id="modifyScreeningRoomScreeningRoomLabel" layoutX="313.0" layoutY="103.0" text="Screening Room" />
-      <TextField id="modifyScreeningRoomScreeningRoomTextField" layoutX="282.0" layoutY="157.0" />
-      <Button id="modifyScreeningRoomSaveButton" layoutX="348.0" layoutY="338.0" mnemonicParsing="false" text="Save" />
-      <Button id="modifyScreeningRoomBackButton" layoutX="145.0" layoutY="338.0" mnemonicParsing="false" text="Back" />
-      <ListView id="modifyScreeningRoomListView" layoutX="34.0" layoutY="121.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label id="ModifyScreeningRoomMovieNameLabel" layoutX="137.0" layoutY="93.0" prefHeight="18.0" prefWidth="96.0" text="Showtime" />
+      <Label id="modifyScreeningRoomScreeningRoomLabel" layoutX="368.0" layoutY="94.0" text="Screening Room" />
+      <TextField id="modifyScreeningRoomScreeningRoomTextField" layoutX="337.0" layoutY="121.0" />
+      <Button id="modifyScreeningRoomSaveButton" layoutX="478.0" layoutY="338.0" mnemonicParsing="false" text="Save" />
+      <Button id="modifyScreeningRoomBackButton" layoutX="391.0" layoutY="338.0" mnemonicParsing="false" text="Back" />
+      <ListView id="modifyScreeningRoomListView" layoutX="76.0" layoutY="121.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
