@@ -1,10 +1,15 @@
 package com.example.final_project.Model;
+
+import com.example.final_project.helpers.ImportHelper;
+
+import java.util.List;
+
 /**
  * The ScreeningRoom class represents a movie screening room with associated data such as room ID,
  * movie name, movie ID, and number of seats.
- *
+ * <p>
  * This class is intended for use in a JavaFX application, where instances of ScreeningRoom
- * may be displayed in UI components such as a ListView or TableView.
+ * may be displayed in UI components such as a ListView.
  */
 public class ScreeningRoom {
     private int roomId;
@@ -63,5 +68,15 @@ public class ScreeningRoom {
                 ", movieId=" + movieId +
                 ", numberOfSeats=" + numberOfSeats +
                 '}';
+    }
+    /**
+     * Retrieves a list of ScreeningRoom objects from a CSV file using the ImportHelper.
+     * This method delegates the file reading logic to the ImportHelper class.
+     *
+     * @return List of ScreeningRoom objects
+     */
+    public static List<ScreeningRoom> loadRoomsFromCSV() {
+        // Delegate the file loading task to the ImportHelper class
+        return ImportHelper.loadRoomsFromCSV();
     }
 }
