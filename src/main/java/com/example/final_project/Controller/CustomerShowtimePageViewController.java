@@ -80,8 +80,7 @@ public class CustomerShowtimePageViewController {
      * Logs the user out and returns to the login screen.
      */
     private void onLogOut() {
-        // Implement the logic for logging out, such as redirecting to the login page
-        System.out.println("Logging out...");
+        System.exit(0);
     }
 
     /**

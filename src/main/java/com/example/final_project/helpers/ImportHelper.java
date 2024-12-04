@@ -19,7 +19,7 @@ public class ImportHelper {
 
     /**
      * Loads a list of users from the "userData.csv" file.
-     *
+     * Skips the first line containing column names.
      * @return a list of User objects loaded from the CSV file.
      */
     public static List<User> loadUsersFromCSV() {
@@ -28,6 +28,10 @@ public class ImportHelper {
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
+
+            // Skip the first line (column names)
+            br.readLine();  // Read and discard the first line
+
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 int userId = Integer.parseInt(values[0].trim());
@@ -44,7 +48,7 @@ public class ImportHelper {
 
     /**
      * Loads a list of clients from the "clientData.csv" file.
-     *
+     * Skips the first line containing column names.
      * @return a list of Client objects loaded from the CSV file.
      */
     public static List<Client> loadClientsFromCSV() {
@@ -54,6 +58,10 @@ public class ImportHelper {
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
+
+            // Skip the first line (column names)
+            br.readLine();  // Read and discard the first line
+
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 int clientId = Integer.parseInt(values[0].trim());
@@ -81,8 +89,7 @@ public class ImportHelper {
 
     /**
      * Loads a list of managers from the "managerData.csv" file.
-     * Only valid manager records are loaded, and invalid records are skipped.
-     *
+     * Skips the first line containing column names.
      * @return a list of Manager objects loaded from the CSV file.
      */
     public static List<Manager> loadManagersFromCSV() {
@@ -91,6 +98,10 @@ public class ImportHelper {
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
+
+            // Skip the first line (column names)
+            br.readLine();  // Read and discard the first line
+
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 if (values.length >= 3) {
@@ -102,8 +113,6 @@ public class ImportHelper {
                     } catch (NumberFormatException e) {
                         System.err.println("Error parsing manager data: " + line);
                     }
-                } else {
-                    System.err.println("Invalid line in CSV: " + line);
                 }
             }
         } catch (IOException e) {
@@ -112,6 +121,7 @@ public class ImportHelper {
 
         return managers;
     }
+
 
     /**
      * Loads a list of screening rooms from the "screeningRoomData.csv" file.
