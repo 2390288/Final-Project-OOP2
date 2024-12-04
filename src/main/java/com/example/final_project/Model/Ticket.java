@@ -41,6 +41,9 @@ public abstract class Ticket {
         this.clientId = clientId;
     }
 
+    public Ticket(int ticketId, LocalDateTime purchaseDate, int roomId, LocalDateTime screenTime, String movieName) {
+    }
+
     /**
      * Returns the unique ticket ID.
      *

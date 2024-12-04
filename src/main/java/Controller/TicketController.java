@@ -56,11 +56,7 @@ public class TicketController {
         String physicalTicketId = UUID.randomUUID().toString();
         LocalDateTime purchaseDateTime = LocalDateTime.now();
 
-        Ticket digitalTicket = new DigitalTicket(digitalTicketId, purchaseDateTime, showtime, clientId);
         Ticket physicalTicket = new PhysicalTicket(physicalTicketId, purchaseDateTime, showtime, clientId);
-
-        tickets.add(digitalTicket);
-        tickets.add(physicalTicket);
     }
 
     // Method to retrieve a ticket by ID

@@ -1,5 +1,7 @@
 package com.example.final_project.Controller;
 
+import com.example.final_project.helpers.ImportHelper;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,31 +18,26 @@ import java.io.IOException;
  */
 public class ClientRegisterViewController {
 
-    // FXML annotations link these fields to the corresponding UI elements in the FXML file
     @FXML
-    private TextField usernameRegisterTextBox; // Text field for the username input
+    private TextField usernameRegisterTextBox;
 
     @FXML
-    private TextField emailRegisterTextBox; // Text field for the email input
+    private TextField emailRegisterTextBox;
 
     @FXML
-    private TextField passwordRegisterTextBox; // Text field for the password input
+    private TextField passwordRegisterTextBox;
 
     @FXML
-    private Button registerButton; // Button to trigger registration
+    private Button registerButton;
 
-    /**
-     * Handles the register button click event.
-     * Retrieves user input and performs registration logic.
-     */
     @FXML
     private void onRegisterButtonClick() {
-        // Retrieve input values
+        // Retrieve values from the TextFields
         String username = usernameRegisterTextBox.getText().trim();
         String email = emailRegisterTextBox.getText().trim();
         String password = passwordRegisterTextBox.getText().trim();
 
-        // Validate input fields
+        // Validation checks
         if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
             showError("Validation Error", "All fields must be filled out.");
             return;
@@ -51,41 +48,31 @@ public class ClientRegisterViewController {
             return;
         }
 
-        // Simulate registration logic (this can be replaced with actual logic, e.g., API calls)
-        showConfirmation("Registration Successful", "Welcome, " + username + "!");
+        // Simulate client registration by saving directly to CSV
+        try {
+            ImportHelper.addClientToCSV(username, email, password);
 
-        // After successful registration, open the customer showtime page
-        openCustomerShowtimePage();
+            // After registration, load the next view (customer-showtime-page-view.fxml)
+            handleScreeningRoomManagement(null);  // Call the method to change the view
 
-        // Clear the input fields
+        } catch (IOException e) {
+            showError("Error", "Failed to save client information.");
+            e.printStackTrace();
+        }
+
         clearFields();
     }
 
-    /**
-     * Validates an email address.
-     *
-     * @param email the email to validate
-     * @return true if the email is valid, false otherwise
-     */
     private boolean isValidEmail(String email) {
         return email.matches("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$");
     }
 
-    /**
-     * Clears the input fields after successful registration.
-     */
     private void clearFields() {
         usernameRegisterTextBox.clear();
         emailRegisterTextBox.clear();
         passwordRegisterTextBox.clear();
     }
 
-    /**
-     * Displays an error alert.
-     *
-     * @param title   the title of the alert
-     * @param message the message to display in the alert
-     */
     private void showError(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -93,35 +80,22 @@ public class ClientRegisterViewController {
         alert.showAndWait();
     }
 
-    /**
-     * Displays a confirmation alert.
-     *
-     * @param title   the title of the alert
-     * @param message the message to display in the alert
-     */
-    private void showConfirmation(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setContentText(message);
-        alert.showAndWait();
+    // Doesn't work
+    public void handleScreeningRoomManagement(ActionEvent event) {
+        openNewPage("/com/example/final_project/customer-showtime-page-view.fxml");
     }
 
-    /**
-     * Opens the customer showtime page.
-     */
-    private void openCustomerShowtimePage() {
-        try {
-            // Load the FXML for the customer showtime page
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/final_project/customer-showtime-page-view.fxml"));
-            Scene scene = new Scene(loader.load());
 
-            // Get the current stage and set the new scene
+    private void openNewPage(String fxmlPath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Scene scene = new Scene(loader.load());
             Stage stage = (Stage) registerButton.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
+            showError("Error", "Failed to load the next page.");
             e.printStackTrace();
-            showError("Error", "Failed to load the customer showtime page.");
         }
     }
 }
