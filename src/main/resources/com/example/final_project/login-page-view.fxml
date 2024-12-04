@@ -15,7 +15,10 @@
         <TextField fx:id="usernameLabel" layoutX="220.0" layoutY="109.0" style="-fx-border-color: black; -fx-border-width: 1;" />
         <TextField fx:id="passwordLabel" layoutX="220.0" layoutY="157.0" style="-fx-border-color: black; -fx-border-width: 1;" />
 
-        <Button fx:id="backButton" layoutX="354.0" layoutY="239.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #D3D3D3; -fx-text-fill: #000000;" text="Back" />
-      <Button fx:id="backButton1" layoutX="429.0" layoutY="239.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #D3D3D3; -fx-text-fill: #000000;" text="Login in" />
+        <!-- Back button with onAction -->
+        <Button fx:id="backButton" layoutX="354.0" layoutY="239.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #D3D3D3; -fx-text-fill: #000000;" text="Back" onAction="#goBack" />
+
+        <!-- Login button with onAction -->
+        <Button fx:id="backButton1" layoutX="429.0" layoutY="239.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #D3D3D3; -fx-text-fill: #000000;" text="Login in" onAction="#attemptLogin" />
     </children>
 </AnchorPane>

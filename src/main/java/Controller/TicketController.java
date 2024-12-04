@@ -2,7 +2,6 @@ package Controller;
 
 import com.example.final_project.Model.Showtime;
 import com.example.final_project.Model.Ticket;
-import com.example.final_project.Model.DigitalTicket;
 import com.example.final_project.Model.PhysicalTicket;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

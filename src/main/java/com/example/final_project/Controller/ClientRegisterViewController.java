@@ -71,6 +71,7 @@ public class ClientRegisterViewController {
         usernameRegisterTextBox.clear();
         emailRegisterTextBox.clear();
         passwordRegisterTextBox.clear();
+
     }
 
     private void showError(String title, String message) {
@@ -81,6 +82,7 @@ public class ClientRegisterViewController {
     }
 
     // Doesn't work
+    @FXML
     public void handleScreeningRoomManagement(ActionEvent event) {
         openNewPage("/com/example/final_project/customer-showtime-page-view.fxml");
     }
