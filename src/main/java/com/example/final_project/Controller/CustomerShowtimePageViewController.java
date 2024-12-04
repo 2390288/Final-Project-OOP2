@@ -30,33 +30,16 @@ public class CustomerShowtimePageViewController {
     private ListView<String> movieTitleListView; // ListView for movie titles
 
     @FXML
-    private Label upcomingMovieTitleLabel; // Label for upcoming movie titles
-
-    @FXML
     private Button logOutButton; // Button to log out
 
     @FXML
     private Button purchasedButton; // Button to proceed with a purchase
-
-    @FXML
-    private ImageView customerImageView; // ImageView for customer image
-
-    @FXML
-    private Label customerNameLabel; // Label to display the customer's name
-
-    @FXML
-    private Label movieTitleLabel; // Label to display movie title
-
-    @FXML
-    private Label showtimeLabel; // Label to display showtimes
 
     /**
      * Initializes the controller and loads movie and showtime data.
      */
     @FXML
     public void initialize() {
-        // Set customer name
-        customerNameLabel.setText("John Doe");
 
         // Load showtimes and movie titles from ImportHelper
         loadShowtimesAndMovies();
@@ -120,15 +103,5 @@ public class CustomerShowtimePageViewController {
             e.printStackTrace();
             System.out.println("Error loading e-ticket page view.");
         }
-    }
-
-    /**
-     * Sets the customer image in the ImageView (if applicable).
-     * This could be used to set a customer profile image.
-     */
-    private void setCustomerImage() {
-        // Example for setting an image URL dynamically (this can be replaced with the actual logic)
-        Image customerImage = new Image("file:../../../../../Pictures/Screenshots/5828768-200.png");
-        customerImageView.setImage(customerImage);
     }
 }
