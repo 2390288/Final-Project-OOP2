@@ -1,9 +1,14 @@
 package com.example.final_project.Controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
  * Controller class for the Login Page View.
@@ -62,22 +67,36 @@ public class LoginPageViewController {
      */
     @FXML
     public void initialize() {
-        backButton.setOnAction(event -> navigateBack());
+        backButton.setOnAction(event -> goBack());
         backButton1.setOnAction(event -> attemptLogin());
     }
 
     /**
      * Handles the "Back" button click event. Navigates the user to the previous page.
      */
-    private void navigateBack() {
-        System.out.println("Back button clicked. Navigating to the previous page...");
-        // Add navigation logic here (e.g., switch scene or close the current window)
+    @FXML
+    private void goBack() {
+        System.out.println("Back button clicked. Navigating to the entry page...");
+        try {
+            // Load the entry page view
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/final_project/entry-page-view.fxml"));
+            Scene entryPageScene = new Scene(loader.load());
+
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            stage.setScene(entryPageScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the exception (maybe show an error message to the user)
+        }
     }
 
     /**
      * Handles the "Login" button click event.
      * Validates the entered username and password, and attempts to log in.
      */
+    @FXML
     private void attemptLogin() {
         String username = usernameLabel.getText().trim();
         String password = passwordLabel.getText().trim();

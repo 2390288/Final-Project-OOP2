@@ -3,14 +3,27 @@ package com.example.final_project.Model;
 import java.time.LocalDateTime;
 
 public class Showtime {
+    private int showTimeId;
     private int movieId; // Primary Key
     private int roomId; // Foreign Key
     private LocalDateTime screenTimeDateTime; // Foreign Key
 
-    public Showtime(int movieId, int roomId, LocalDateTime screenTime) {
+    public Showtime(int pShowTimeId, int pMovieId, int pRoomId, LocalDateTime pScreenTime) {
+        // to fix later
+        // setShowTimeID(pShowTimeId);
+        setMovieId(pMovieId);
+        setRoomId(pRoomId);
+        setScreenTimeDateTime(pScreenTime);
     }
 
-    // Getters and Setters
+    public int getShowTimeId() {
+        return showTimeId;
+    }
+
+    public void setShowTimeId(int showTimeId) {
+        this.showTimeId = showTimeId;
+    }
+
     public int getMovieId() {
         return movieId;
     }
