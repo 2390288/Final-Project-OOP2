@@ -66,26 +66,27 @@ public class CustomerShowtimePageViewController {
         purchasedButton.setOnAction(event -> onPurchase());
     }
 
-    /**
-     * Loads the showtimes and movie titles into the ListView from the ImportHelper.
-     */
     private void loadShowtimesAndMovies() {
         // Fetch movie and showtime data
         List<Showtime> showtimes = ImportHelper.loadShowtimesFromCSV();
         List<Movie> movies = ImportHelper.loadMoviesFromCSV();
 
+        // Clear the ListViews before loading new data
+        movieTitleListView.getItems().clear();
+        showtimeListView.getItems().clear();
+
         // Create a DateTimeFormatter for formatting the showtime
         DateTimeFormatter showtimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
         // Create a mapping of movieId to movie title for quick lookup
-        for (Showtime showtime : showtimes) {
-            for (Movie movie : movies) {
-                // Match the movieId from showtime with movie in the list
-                if (showtime.getMovieId() == movie.getMovieId()) {  // Compare movie IDs, not names
-                    // Add movie title and formatted showtime to their respective ListViews
-                    movieTitleListView.getItems().add(movie.getMovieName());
+        for (Movie movie : movies) {
+            movieTitleListView.getItems().add(movie.getMovieName()); // Add movie title to the ListView
+
+            // Find all showtimes for the current movie
+            for (Showtime showtime : showtimes) {
+                if (showtime.getMovieId() == movie.getMovieId()) {  // Compare movie IDs
+                    // Add the corresponding showtime to the showtime ListView
                     showtimeListView.getItems().add(showtime.getScreenTimeDateTime().format(showtimeFormatter)); // Format the showtime
-                    break; // Found a match, no need to continue the inner loop
                 }
             }
         }
