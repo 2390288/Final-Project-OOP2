@@ -7,10 +7,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ManagerPageViewController {
+    @FXML
+    private Button screeningRoomManagementLabel;
 
     // Method to handle the "Movie management" button click event
     @FXML
@@ -20,9 +23,27 @@ public class ManagerPageViewController {
 
     // Method to handle the "Screening room management" button click event
     @FXML
-    public void handleScreeningRoomManagement(ActionEvent event) {
-        openNewPage("/com/example/final_project/Modify-Screening-Room-View.fxml");
-    }
+    private void handleScreeningRoomManagement() {
+        try {
+            // Load the Screening Room Management FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("src/main/resources/com/example/final_project/Screening-Room-View.fxml"));
+
+            // Create a new scene for the Screening Room Management view
+            AnchorPane screeningRoomView = loader.load();
+            Scene screeningRoomScene = new Scene(screeningRoomView);
+
+            // Get the current stage (the window that is currently open)
+            Stage stage = (Stage) screeningRoomManagementLabel.getScene().getWindow();
+
+            // Set the new scene for the stage (show the screening room management view)
+            stage.setScene(screeningRoomScene);
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 
     // Method to handle the "Showtime management" button click event
     @FXML
