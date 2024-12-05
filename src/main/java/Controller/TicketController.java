@@ -75,10 +75,10 @@ public class TicketController {
             purchasedDateLabel.setText(digitalTicket.getPurchaseDateTime()
                     .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
             Showtime showtime = digitalTicket.getShowtime();
-            movieNameInfoLabel.setText(showtime.getMovie().getTitle());
-            dateTimeInfoLabel.setText(showtime.getDateTime()
-                    .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
-            screeningRoomInfoLabel.setText(showtime.getScreeningRoom().getName());
+           //movieNameInfoLabel.setText(showtime.getMovie().getTitle());
+            //dateTimeInfoLabel.setText(showtime.getDateTime()
+             //       .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+            //screeningRoomInfoLabel.setText(showtime.getScreeningRoom().getName());
         } else {
             clearTicketDetails();
         }

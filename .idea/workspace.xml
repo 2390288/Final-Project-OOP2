@@ -7,10 +7,7 @@
     <list default="true" id="d2fccb79-1d1c-4994-a064-c8895731e858" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/TicketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/final_project/Controller/ManagerShowtimeAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Controller/ManagerShowtimeAddController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/final_project/Controller/ManagerShowtimeListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Controller/ManagerShowtimeListController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/final_project/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/final_project/Model/Showtime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Model/Showtime.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
