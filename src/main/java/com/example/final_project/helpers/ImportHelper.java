@@ -153,7 +153,16 @@ public class ImportHelper {
 
         return rooms;
     }
+    public static void saveRoomsToCSV(List<ScreeningRoom> rooms) throws IOException {
+        String filePath = CSV_FOLDER + "screeningRoomData.csv";
 
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (ScreeningRoom room : rooms) {
+                writer.write(room.getRoomId() + "," + room.getMovieName() + "," + room.getMovieId() + "," + room.getNumberOfSeats());
+                writer.newLine();
+            }
+        }
+    }
 
     /**
      * Loads a list of showtimes from the "showtimeData.csv" file.
