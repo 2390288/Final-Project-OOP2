@@ -5,14 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2fccb79-1d1c-4994-a064-c8895731e858" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Controller/ManagerClientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Controller/ManagerMovieAddController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Controller/ManagerMovieListController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Controller/ManagerMovieModifyController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Controller/ManagerShowtimeAddController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Controller/ManagerShowtimeListController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/final_project/manager-movie-page-view add.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/final_project/manager-movie-page-view modfiy.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/final_project/manager-showtime-page-view add.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/final_project/MovieModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Model/MovieModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/final_project/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/final_project/Model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/final_project/Model/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/final_project/manager-client-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/final_project/manager-client-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/final_project/manager-movie-list-page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/final_project/manager-movie-list-page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/final_project/manager-showtime-page-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/final_project/manager-showtime-page-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,6 +54,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.HelloApplication.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
@@ -70,10 +90,28 @@
       <option name="presentableId" value="Default" />
       <updated>1732110583054</updated>
       <workItem from="1732110584188" duration="1775000" />
+      <workItem from="1732755763601" duration="3243000" />
+      <workItem from="1733279689765" duration="24775000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalStateException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/final_project/Model/Client.java</url>
+          <line>58</line>
+          <properties field="emailAddress" class="com.example.final_project.Model.Client" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

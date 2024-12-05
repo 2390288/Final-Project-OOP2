@@ -4,7 +4,10 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #EDF7F6;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="516.0" style="-fx-background-color: #EDF7F6;"
+            xmlns="http://javafx.com/javafx/22"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.final_project.Controller.ManagerClientController">
     <children>
         <ListView fx:id="clientListView" layoutX="167.0" layoutY="92.0" prefHeight="239.0" prefWidth="182.0" />
         <Label layoutX="229.0" layoutY="24.0" prefHeight="34.0" prefWidth="56.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Clients" />

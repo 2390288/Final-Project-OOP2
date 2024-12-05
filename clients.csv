@@ -1,0 +1,6 @@
+clientId,userId,emailAddress,signUpDate,name
+1,101,john.doe@example.com,2024-12-01T10:15:30,John Doe
+2,102,jane.smith@example.com,2024-12-02T14:45:00,Jane Smith
+3,103,mike.jones@example.com,2024-12-03T08:00:00,Mike Jones
+4,104,sara.lee@example.com,2024-12-01T09:30:00,Sara Lee
+5,105,alex.tanaka@example.com,2024-12-04T17:45:00,Alex Tanaka
