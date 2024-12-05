@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ScreeningRoomController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.final_project.Controller.ScreeningRoomViewController">
    <children>
       <Label layoutX="227.0" layoutY="52.0" prefHeight="20.0" prefWidth="146.0" text="Screening Room List">
          <font>
