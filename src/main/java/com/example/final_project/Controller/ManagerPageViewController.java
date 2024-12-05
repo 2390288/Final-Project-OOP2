@@ -9,36 +9,21 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
-/**
- * Controller class for the Manager Page View.
- * Handles user interactions with the manager dashboard, including navigation to various management views and logging out.
- */
 public class ManagerPageViewController {
-
-    /**
-     * Button for accessing the Screening Room Management view.
-     */
     @FXML
     private Button screeningRoomManagementLabel;
+@FXML
+    private Button resultDataLabel;
 
-    /**
-     * Handles the "Movie Management" button click event.
-     * Navigates to the Movie Management page.
-     *
-     * @param event The ActionEvent triggered by the button click.
-     */
+    // Method to handle the "Movie management" button click event
     @FXML
     private void handleMovieManagement(ActionEvent event) {
         openNewPage("/com/example/final_project/manager-page-view.fxml");
     }
 
-    /**
-     * Handles the "Screening Room Management" button click event.
-     * Navigates to the Screening Room Management page.
-     */
+    // Method to handle the "Screening room management" button click event
     @FXML
     private void handleScreeningRoomManagement() {
         try {
@@ -59,48 +44,54 @@ public class ManagerPageViewController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
 
-    /**
-     * Handles the "Showtime Management" button click event.
-     * Navigates to the Showtime Management page.
-     *
-     * @param event The ActionEvent triggered by the button click.
-     */
+}
+
+        @FXML
+        private void handleTicketSaleManagement() {
+            try {
+                // Load the Ticket Sale Management FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("src/main/resources/com/example/final_project/Ticket-Sale-View.fxml"));
+
+                // Create a new scene for the Ticket Sale Management view
+                AnchorPane ticketSaleView = loader.load();
+                Scene ticketSaleScene = new Scene(ticketSaleView);
+
+                // Get the current stage (the window that is currently open)
+                Stage stage = (Stage) resultDataLabel.getScene().getWindow();
+
+                // Set the new scene for the stage (show the ticket sale view)
+                stage.setScene(ticketSaleScene);
+                stage.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Handle any errors (e.g., if the FXML file is not found or cannot be loaded)
+            }
+        }
+
+    // Method to handle the "Showtime management" button click event
+
+    // Method to handle the "Showtime management" button click event
     @FXML
     public void handleShowtimeManagement(ActionEvent event) {
         openNewPage("/com/example/final_project/manager-showtime-page-view.fxml");
     }
 
-    /**
-     * Handles the "Result Data" button click event.
-     * Navigates to the Manager Client View page.
-     *
-     * @param event The ActionEvent triggered by the button click.
-     */
+    // Method to handle the "Result data" button click event
     @FXML
     public void handleResultData(ActionEvent event) {
         openNewPage("/com/example/final_project/manager-client-view.fxml");
     }
 
-    /**
-     * Handles the "Log Out" button click event.
-     * Logs the user out by terminating the application.
-     *
-     * @param event The ActionEvent triggered by the button click.
-     */
+    // Method to handle the "Log out" button click event
     @FXML
     public void handleLogOut(ActionEvent event) {
         // Log out by exiting the system
         System.exit(0);  // This will terminate the application
     }
 
-    /**
-     * Utility method to load a new FXML page and display it in a new window (stage).
-     * Displays an error message if the page cannot be loaded.
-     *
-     * @param fxmlPath The path to the FXML file to be loaded.
-     */
+    // Utility method to load a new FXML page and display it in a new window (stage)
     private void openNewPage(String fxmlPath) {
         try {
             // Load the new FXML file and set the scene
