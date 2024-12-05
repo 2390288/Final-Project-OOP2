@@ -16,6 +16,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controller for managing the list of showtimes in the Movie Theatre Management System.
+ * This class handles adding, modifying, deleting, and consulting showtimes,
+ * and interacts with the corresponding views.
+ */
 public class ManagerShowtimeListController {
 
     @FXML
@@ -32,9 +37,13 @@ public class ManagerShowtimeListController {
     @FXML
     private Button deleteButton; // Button to delete a showtime
 
-    private Showtime selectedShowtime;
-    private List<Showtime> showtimeList = new ArrayList<>();
+    private Showtime selectedShowtime; // Currently selected showtime
+    private List<Showtime> showtimeList = new ArrayList<>(); // List of all showtimes
 
+    /**
+     * Initializes the controller by setting up event handlers, populating initial data,
+     * and configuring the ListView.
+     */
     @FXML
     public void initialize() {
         // Initialize the ListView and handle selection
@@ -48,32 +57,39 @@ public class ManagerShowtimeListController {
 
         // Sample showtimes to populate the ListView initially
         showtimeListView.getItems().addAll(
-                new Showtime(1, 101, 1, LocalDateTime.of(2024, 12, 10, 14, 30)), // Adding a theaterId (e.g., 1)
+                new Showtime(1, 101, 1, LocalDateTime.of(2024, 12, 10, 14, 30)),
                 new Showtime(2, 102, 1, LocalDateTime.of(2024, 12, 11, 16, 0)),
                 new Showtime(3, 103, 1, LocalDateTime.of(2024, 12, 12, 18, 15))
         );
-
 
         // Populate movie names (if available) in a separate ListView
         movieListView.getItems().addAll("Inception", "Titanic", "Avengers: Endgame");
     }
 
-    // Handle showtime selection from ListView
+    /**
+     * Handles the selection of a showtime in the ListView.
+     *
+     * @param event the mouse click event
+     */
     private void handleShowtimeSelection(MouseEvent event) {
         selectedShowtime = showtimeListView.getSelectionModel().getSelectedItem();
-        if (selectedShowtime != null) {
-            modifyButton.setDisable(false); // Enable modify button when a showtime is selected
-        } else {
-            modifyButton.setDisable(true); // Disable modify button when no showtime is selected
-        }
+        modifyButton.setDisable(selectedShowtime == null); // Enable/disable modify button based on selection
     }
 
-    // Method to add a showtime to the list and update the view
+    /**
+     * Adds a showtime to the ListView.
+     *
+     * @param showtime the new Showtime object to add
+     */
     public void addShowtimeToList(Showtime showtime) {
         showtimeListView.getItems().add(showtime);
     }
 
-    // Handle adding a new showtime
+    /**
+     * Handles the action of adding a new showtime.
+     *
+     * @param event the button click event
+     */
     @FXML
     private void handleAddShowtime(ActionEvent event) {
         try {
@@ -92,15 +108,20 @@ public class ManagerShowtimeListController {
         }
     }
 
-    // Handle modifying a selected showtime
+    /**
+     * Handles the action of modifying a selected showtime.
+     *
+     * @param event the button click event
+     */
     private void handleModifyShowtime(ActionEvent event) {
         if (selectedShowtime != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/final_project/manager-showtime-modify-view.fxml"));
                 Parent root = loader.load();
 
-             //   ManagerShowtimeModifyController modifyController = loader.getController();
-               // modifyController.setSelectedShowtime(selectedShowtime);
+                // Uncomment and implement modify controller if required
+                // ManagerShowtimeModifyController modifyController = loader.getController();
+                // modifyController.setSelectedShowtime(selectedShowtime);
 
                 Stage stage = new Stage();
                 stage.setTitle("Modify Showtime");
@@ -112,14 +133,22 @@ public class ManagerShowtimeListController {
         }
     }
 
-    // Handle deleting the selected showtime
+    /**
+     * Handles the action of deleting the selected showtime.
+     *
+     * @param event the button click event
+     */
     private void handleDeleteShowtime(ActionEvent event) {
         if (selectedShowtime != null) {
             showtimeListView.getItems().remove(selectedShowtime);
         }
     }
 
-    // Handle consulting showtime details
+    /**
+     * Handles the action of consulting details about the selected showtime.
+     *
+     * @param event the button click event
+     */
     private void handleConsultShowtime(ActionEvent event) {
         if (selectedShowtime != null) {
             System.out.println("Consulting showtime: " + selectedShowtime.getScreenTimeDateTime());
