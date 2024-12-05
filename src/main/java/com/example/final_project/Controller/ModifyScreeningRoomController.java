@@ -1,13 +1,11 @@
 package com.example.final_project.Controller;
 
-import com.example.final_project.Model.ScreeningRoom;
+import com.example.final_project.Model.*;
 import com.example.final_project.helpers.ImportHelper;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,6 +29,9 @@ public class ModifyScreeningRoomController {
 
     private List<ScreeningRoom> rooms;
 
+    // Assuming you want to modify a room passed from another controller, for example:
+    private ScreeningRoom roomToModify;
+
     /**
      * This method is called when the FXML is initialized.
      * It loads the current list of rooms from the CSV file.
@@ -40,8 +41,13 @@ public class ModifyScreeningRoomController {
         // Load existing rooms from the CSV
         rooms = ImportHelper.loadRoomsFromCSV();
 
-        // Example: Set initial values in the text fields if you're modifying an existing room
-        // This should be done by getting the selected ScreeningRoom and populating the fields.
+        // Set fields with the current information from the room to modify
+        if (roomToModify != null) {
+            roomIdField.setText(String.valueOf(roomToModify.getRoomId()));
+            movieNameField.setText(roomToModify.getMovieName());
+            movieIdField.setText(String.valueOf(roomToModify.getMovieId()));
+            seatsField.setText(String.valueOf(roomToModify.getNumberOfSeats()));
+        }
     }
 
     /**
@@ -58,29 +64,29 @@ public class ModifyScreeningRoomController {
             int numberOfSeats = Integer.parseInt(seatsField.getText());
 
             // Search for the existing room by roomId or create a new room if not found
-            ScreeningRoom roomToUpdate = null;
-            for (ScreeningRoom room : rooms) {
-                if (room.getRoomId() == roomId) {
-                    roomToUpdate = room;
-                    break;
-                }
-            }
-
-            if (roomToUpdate != null) {
+            if (roomToModify != null) {
                 // Update the existing room
-                roomToUpdate.setMovieName(movieName);
-                roomToUpdate.setMovieId(movieId);
-                roomToUpdate.setNumberOfSeats(numberOfSeats);
+                roomToModify.setMovieName(movieName);
+                roomToModify.setMovieId(movieId);
+                roomToModify.setNumberOfSeats(numberOfSeats);
             } else {
-                // Create a new room if it doesn't exist
-                rooms.add(new ScreeningRoom(roomId, movieName, movieId, numberOfSeats));
+                // Create a new room if roomToModify is null
+                roomToModify = new ScreeningRoom(roomId, movieName, movieId, numberOfSeats);
+                rooms.add(roomToModify);
             }
 
             // Save the updated list of rooms to the CSV file
             ImportHelper.saveRoomsToCSV(rooms);
 
+            // Optionally: Inform the other controller (e.g., ScreeningRoomViewController)
+            // if it's necessary to update the screening room on another view or perform actions
+            // This assumes you have an instance of ScreeningRoomViewController in your app.
+            // For example, you can call:
+            // controller.setScreeningRoom(roomToModify);
+
             // Show a success message
             showAlert("Success", "Screening room updated successfully!", Alert.AlertType.INFORMATION);
+
         } catch (IOException | NumberFormatException e) {
             // Handle errors (e.g., invalid input or IO errors)
             e.printStackTrace();
@@ -100,5 +106,14 @@ public class ModifyScreeningRoomController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    /**
+     * Sets the screening room that will be modified.
+     * This method should be called from another controller (e.g., ScreeningRoomViewController).
+     * @param roomToModify The screening room to modify.
+     */
+    public void setScreeningRoom(ScreeningRoom roomToModify) {
+        this.roomToModify = roomToModify;
     }
 }

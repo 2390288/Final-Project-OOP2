@@ -12,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import com.example.final_project.Controller.ModifyScreeningRoomController;
 import java.io.IOException;
 import java.util.List;
 
@@ -71,7 +70,7 @@ public class ScreeningRoomViewController {
 
     private void openModifyScreeningRoomView(ScreeningRoom roomToModify) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/path/to/ModifyScreeningRoomView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("src/main/resources/com/example/final_project/Modify-Screening-Room-View.fxml"));
             Scene scene = new Scene(loader.load());
             Stage stage = new Stage();
             stage.setScene(scene);
