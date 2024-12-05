@@ -1,6 +1,7 @@
 package com.example.final_project.Model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Showtime {
     private int showTimeId;
@@ -46,5 +47,11 @@ public class Showtime {
 
     public void setScreenTimeDateTime(LocalDateTime screenTimeDateTime) {
         this.screenTimeDateTime = screenTimeDateTime;
+    }
+    @Override
+    public String toString() {
+        return "Movie ID: " + movieId +
+                ", Room ID: " + roomId +
+                ", Screen Time: " + screenTimeDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     }
 }

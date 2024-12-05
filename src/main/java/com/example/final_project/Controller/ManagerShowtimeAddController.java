@@ -67,8 +67,8 @@ public class ManagerShowtimeAddController {
             return;
         }
 
-        // Create the Showtime object
-        Showtime newShowtime = new Showtime(movieId, roomId, screenTime);
+        int newId = showtimeList.size() + 1; // Generate a unique ID
+        Showtime newShowtime = new Showtime(newId, movieId, roomId, screenTime);
 
         // Add the showtime to the list
         showtimeList.add(newShowtime);

@@ -48,10 +48,11 @@ public class ManagerShowtimeListController {
 
         // Sample showtimes to populate the ListView initially
         showtimeListView.getItems().addAll(
-                new Showtime(1, 101, LocalDateTime.of(2024, 12, 10, 14, 30)),
-                new Showtime(2, 102, LocalDateTime.of(2024, 12, 11, 16, 0)),
-                new Showtime(3, 103, LocalDateTime.of(2024, 12, 12, 18, 15))
+                new Showtime(1, 101, 1, LocalDateTime.of(2024, 12, 10, 14, 30)), // Adding a theaterId (e.g., 1)
+                new Showtime(2, 102, 1, LocalDateTime.of(2024, 12, 11, 16, 0)),
+                new Showtime(3, 103, 1, LocalDateTime.of(2024, 12, 12, 18, 15))
         );
+
 
         // Populate movie names (if available) in a separate ListView
         movieListView.getItems().addAll("Inception", "Titanic", "Avengers: Endgame");
