@@ -14,6 +14,8 @@ import java.io.IOException;
 public class ManagerPageViewController {
     @FXML
     private Button screeningRoomManagementLabel;
+@FXML
+    private Button resultDataLabel;
 
     // Method to handle the "Movie management" button click event
     @FXML
@@ -42,8 +44,30 @@ public class ManagerPageViewController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+        @FXML
+        private void handleTicketSaleManagement() {
+            try {
+                // Load the Ticket Sale Management FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("src/main/resources/com/example/final_project/Ticket-Sale-View.fxml"));
 
+                // Create a new scene for the Ticket Sale Management view
+                AnchorPane ticketSaleView = loader.load();
+                Scene ticketSaleScene = new Scene(ticketSaleView);
+
+                // Get the current stage (the window that is currently open)
+                Stage stage = (Stage) resultDataLabel.getScene().getWindow();
+
+                // Set the new scene for the stage (show the ticket sale view)
+                stage.setScene(ticketSaleScene);
+                stage.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Handle any errors (e.g., if the FXML file is not found or cannot be loaded)
+            }
+        }
 
     // Method to handle the "Showtime management" button click event
     @FXML
@@ -51,11 +75,6 @@ public class ManagerPageViewController {
         openNewPage("/com/example/final_project/manager-showtime-page-view.fxml");
     }
 
-    // Method to handle the "Result data" button click event
-    @FXML
-    public void handleResultData(ActionEvent event) {
-        openNewPage("/com/example/final_project/manager-client-view.fxml");
-    }
 
     // Method to handle the "Log out" button click event
     @FXML
@@ -86,3 +105,4 @@ public class ManagerPageViewController {
         }
     }
 }
+
