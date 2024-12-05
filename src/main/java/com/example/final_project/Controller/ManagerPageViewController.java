@@ -1,51 +1,106 @@
 package com.example.final_project.Controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
+/**
+ * Controller class for the Manager Page View.
+ * Handles user interactions with the manager dashboard, including navigation to various management views and logging out.
+ */
 public class ManagerPageViewController {
 
-    // Method to handle the "Movie management" button click event
-    public void handleMovieManagement(ActionEvent event) {
+    /**
+     * Button for accessing the Screening Room Management view.
+     */
+    @FXML
+    private Button screeningRoomManagementLabel;
+
+    /**
+     * Handles the "Movie Management" button click event.
+     * Navigates to the Movie Management page.
+     *
+     * @param event The ActionEvent triggered by the button click.
+     */
+    @FXML
+    private void handleMovieManagement(ActionEvent event) {
         openNewPage("/com/example/final_project/manager-page-view.fxml");
     }
 
-    // Method to handle the "Screening room management" button click event
-    public void handleScreeningRoomManagement(ActionEvent event) {
-        openNewPage("/com/example/final_project/Modify-Screening-Room-View.fxml");
+    /**
+     * Handles the "Screening Room Management" button click event.
+     * Navigates to the Screening Room Management page.
+     */
+    @FXML
+    private void handleScreeningRoomManagement() {
+        try {
+            // Load the Screening Room Management FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("src/main/resources/com/example/final_project/Screening-Room-View.fxml"));
+
+            // Create a new scene for the Screening Room Management view
+            AnchorPane screeningRoomView = loader.load();
+            Scene screeningRoomScene = new Scene(screeningRoomView);
+
+            // Get the current stage (the window that is currently open)
+            Stage stage = (Stage) screeningRoomManagementLabel.getScene().getWindow();
+
+            // Set the new scene for the stage (show the screening room management view)
+            stage.setScene(screeningRoomScene);
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    // Method to handle the "Showtime management" button click event
+    /**
+     * Handles the "Showtime Management" button click event.
+     * Navigates to the Showtime Management page.
+     *
+     * @param event The ActionEvent triggered by the button click.
+     */
+    @FXML
     public void handleShowtimeManagement(ActionEvent event) {
         openNewPage("/com/example/final_project/manager-showtime-page-view.fxml");
     }
 
-    // Method to handle the "Result data" button click event
+    /**
+     * Handles the "Result Data" button click event.
+     * Navigates to the Manager Client View page.
+     *
+     * @param event The ActionEvent triggered by the button click.
+     */
+    @FXML
     public void handleResultData(ActionEvent event) {
         openNewPage("/com/example/final_project/manager-client-view.fxml");
     }
 
-    // Method to handle the "Log out" button click event
+    /**
+     * Handles the "Log Out" button click event.
+     * Logs the user out by terminating the application.
+     *
+     * @param event The ActionEvent triggered by the button click.
+     */
+    @FXML
     public void handleLogOut(ActionEvent event) {
-        // Optionally show a confirmation or information message before logging out
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Logout");
-        alert.setHeaderText(null);
-        alert.setContentText("You have been logged out.");
-        alert.showAndWait();
-
-        // Close the current window and return to the login screen (or handle logout logic)
-        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        stage.close();
+        // Log out by exiting the system
+        System.exit(0);  // This will terminate the application
     }
 
-    // Utility method to load a new FXML page and display it in a new window (stage)
+    /**
+     * Utility method to load a new FXML page and display it in a new window (stage).
+     * Displays an error message if the page cannot be loaded.
+     *
+     * @param fxmlPath The path to the FXML file to be loaded.
+     */
     private void openNewPage(String fxmlPath) {
         try {
             // Load the new FXML file and set the scene

@@ -19,7 +19,7 @@ public class ImportHelper {
 
     /**
      * Loads a list of users from the "userData.csv" file.
-     *
+     * Skips the first line containing column names.
      * @return a list of User objects loaded from the CSV file.
      */
     public static List<User> loadUsersFromCSV() {
@@ -28,6 +28,10 @@ public class ImportHelper {
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
+
+            // Skip the first line (column names)
+            br.readLine();  // Read and discard the first line
+
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 int userId = Integer.parseInt(values[0].trim());
@@ -44,7 +48,7 @@ public class ImportHelper {
 
     /**
      * Loads a list of clients from the "clientData.csv" file.
-     *
+     * Skips the first line containing column names.
      * @return a list of Client objects loaded from the CSV file.
      */
     public static List<Client> loadClientsFromCSV() {
@@ -54,6 +58,10 @@ public class ImportHelper {
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
+
+            // Skip the first line (column names)
+            br.readLine();  // Read and discard the first line
+
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 int clientId = Integer.parseInt(values[0].trim());
@@ -81,8 +89,7 @@ public class ImportHelper {
 
     /**
      * Loads a list of managers from the "managerData.csv" file.
-     * Only valid manager records are loaded, and invalid records are skipped.
-     *
+     * Skips the first line containing column names.
      * @return a list of Manager objects loaded from the CSV file.
      */
     public static List<Manager> loadManagersFromCSV() {
@@ -91,6 +98,10 @@ public class ImportHelper {
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
+
+            // Skip the first line (column names)
+            br.readLine();  // Read and discard the first line
+
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 if (values.length >= 3) {
@@ -102,8 +113,6 @@ public class ImportHelper {
                     } catch (NumberFormatException e) {
                         System.err.println("Error parsing manager data: " + line);
                     }
-                } else {
-                    System.err.println("Invalid line in CSV: " + line);
                 }
             }
         } catch (IOException e) {
@@ -112,6 +121,7 @@ public class ImportHelper {
 
         return managers;
     }
+
 
     /**
      * Loads a list of screening rooms from the "screeningRoomData.csv" file.
@@ -143,7 +153,16 @@ public class ImportHelper {
 
         return rooms;
     }
+    public static void saveRoomsToCSV(List<ScreeningRoom> rooms) throws IOException {
+        String filePath = CSV_FOLDER + "screeningRoomData.csv";
 
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (ScreeningRoom room : rooms) {
+                writer.write(room.getRoomId() + "," + room.getMovieName() + "," + room.getMovieId() + "," + room.getNumberOfSeats());
+                writer.newLine();
+            }
+        }
+    }
 
     /**
      * Loads a list of showtimes from the "showtimeData.csv" file.
@@ -157,12 +176,20 @@ public class ImportHelper {
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
+            boolean isFirstLine = true;
+
             while ((line = br.readLine()) != null) {
+                if (isFirstLine) {
+                    isFirstLine = false;
+                    continue;
+                }
+
                 String[] values = line.split(",");
-                int movieId = Integer.parseInt(values[0].trim());
-                int roomId = Integer.parseInt(values[1].trim());
-                LocalDateTime screenTime = LocalDateTime.parse(values[2].trim(), formatter);
-                showtimes.add(new Showtime(movieId, roomId, screenTime));
+                int showTimeId = Integer.parseInt(values[0].trim());
+                int movieId = Integer.parseInt(values[1].trim());
+                int roomId = Integer.parseInt(values[2].trim());
+                LocalDateTime screenTime = LocalDateTime.parse(values[3].trim(), formatter);
+                showtimes.add(new Showtime(showTimeId, movieId, roomId, screenTime));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -171,29 +198,35 @@ public class ImportHelper {
         return showtimes;
     }
 
-    /**
-     * Loads a list of movies from the "movieData.csv" file.
-     * The CSV file is expected to have the following columns: movieName, movieID, movieGenre.
-     *
-     * @return a list of Movie objects loaded from the CSV file.
-     */
+
     public static List<Movie> loadMoviesFromCSV() {
         List<Movie> movies = new ArrayList<>();
         String filePath = CSV_FOLDER + "movieData.csv";
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
+            boolean isFirstLine = true; // To skip the header row
             while ((line = br.readLine()) != null) {
+                // Skip the header line
+                if (isFirstLine) {
+                    isFirstLine = false;
+                    continue;
+                }
+
                 // Split by comma and trim extra spaces.
                 String[] values = line.split(",");
                 if (values.length >= 3) {
-                    // Parse the movieId from the CSV (assuming it's the second column)
-                    int movieId = Integer.parseInt(values[1].trim());
-                    String movieName = values[0].trim();
-                    String movieGenre = values[2].trim();
+                    try {
+                        // Parse the movieId from the CSV (assuming it's the second column)
+                        int movieId = Integer.parseInt(values[1].trim());
+                        String movieName = values[0].trim();
+                        String movieGenre = values[2].trim();
 
-                    // Create a Movie object with all the required parameters
-                    movies.add(new Movie(movieId, movieName, movieGenre));
+                        // Create a Movie object with all the required parameters
+                        movies.add(new Movie(movieId, movieName, movieGenre));
+                    } catch (NumberFormatException e) {
+                        System.out.println("Skipping invalid movie entry: " + line);
+                    }
                 }
             }
         } catch (IOException e) {
@@ -202,6 +235,7 @@ public class ImportHelper {
 
         return movies;
     }
+
     /**
      * Loads a list of tickets from the "ticketData.csv" file.
      *
