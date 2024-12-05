@@ -9,19 +9,36 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
+/**
+ * Controller class for the Manager Page View.
+ * Handles user interactions with the manager dashboard, including navigation to various management views and logging out.
+ */
 public class ManagerPageViewController {
+
+    /**
+     * Button for accessing the Screening Room Management view.
+     */
     @FXML
     private Button screeningRoomManagementLabel;
 
-    // Method to handle the "Movie management" button click event
+    /**
+     * Handles the "Movie Management" button click event.
+     * Navigates to the Movie Management page.
+     *
+     * @param event The ActionEvent triggered by the button click.
+     */
     @FXML
     private void handleMovieManagement(ActionEvent event) {
         openNewPage("/com/example/final_project/manager-page-view.fxml");
     }
 
-    // Method to handle the "Screening room management" button click event
+    /**
+     * Handles the "Screening Room Management" button click event.
+     * Navigates to the Screening Room Management page.
+     */
     @FXML
     private void handleScreeningRoomManagement() {
         try {
@@ -42,29 +59,48 @@ public class ManagerPageViewController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
-
-
-    // Method to handle the "Showtime management" button click event
+    /**
+     * Handles the "Showtime Management" button click event.
+     * Navigates to the Showtime Management page.
+     *
+     * @param event The ActionEvent triggered by the button click.
+     */
     @FXML
     public void handleShowtimeManagement(ActionEvent event) {
         openNewPage("/com/example/final_project/manager-showtime-page-view.fxml");
     }
 
-    // Method to handle the "Result data" button click event
+    /**
+     * Handles the "Result Data" button click event.
+     * Navigates to the Manager Client View page.
+     *
+     * @param event The ActionEvent triggered by the button click.
+     */
     @FXML
     public void handleResultData(ActionEvent event) {
         openNewPage("/com/example/final_project/manager-client-view.fxml");
     }
 
-    // Method to handle the "Log out" button click event
+    /**
+     * Handles the "Log Out" button click event.
+     * Logs the user out by terminating the application.
+     *
+     * @param event The ActionEvent triggered by the button click.
+     */
     @FXML
     public void handleLogOut(ActionEvent event) {
         // Log out by exiting the system
         System.exit(0);  // This will terminate the application
     }
 
-    // Utility method to load a new FXML page and display it in a new window (stage)
+    /**
+     * Utility method to load a new FXML page and display it in a new window (stage).
+     * Displays an error message if the page cannot be loaded.
+     *
+     * @param fxmlPath The path to the FXML file to be loaded.
+     */
     private void openNewPage(String fxmlPath) {
         try {
             // Load the new FXML file and set the scene

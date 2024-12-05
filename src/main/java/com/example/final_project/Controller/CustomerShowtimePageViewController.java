@@ -18,88 +18,97 @@ import java.util.List;
 
 /**
  * Controller for the Customer Showtime Page View.
- * Handles actions and interactions on the customer showtime page.
+ * Manages user interactions and data display on the customer showtime page.
  */
 public class CustomerShowtimePageViewController {
 
-    // FXML annotations link these fields to the corresponding UI elements in the FXML file
+    // Links to the ListView in the FXML file for displaying showtimes
     @FXML
-    private ListView<String> showtimeListView; // ListView for showtimes
+    private ListView<String> showtimeListView;
 
+    // Links to the ListView in the FXML file for displaying movie titles
     @FXML
-    private ListView<String> movieTitleListView; // ListView for movie titles
+    private ListView<String> movieTitleListView;
 
+    // Button in the FXML file that allows the user to log out
     @FXML
-    private Button logOutButton; // Button to log out
+    private Button logOutButton;
 
+    // Button in the FXML file for proceeding to the purchase process
     @FXML
-    private Button purchasedButton; // Button to proceed with a purchase
+    private Button purchasedButton;
 
     /**
-     * Initializes the controller and loads movie and showtime data.
+     * Initializes the controller when the FXML file is loaded.
+     * Automatically called after the FXML components are instantiated.
      */
     @FXML
     public void initialize() {
-
-        // Load showtimes and movie titles from ImportHelper
+        // Load the movie and showtime data into the ListView components
         loadShowtimesAndMovies();
 
-        // Add event handlers for buttons
-        logOutButton.setOnAction(event -> onLogOut());
-        purchasedButton.setOnAction(event -> onPurchase());
+        // Add event handlers to buttons for user interactions
+        logOutButton.setOnAction(event -> onLogOut()); // Log out the user
+        purchasedButton.setOnAction(event -> onPurchase()); // Proceed to purchase
     }
 
+    /**
+     * Loads showtime and movie data into their respective ListView components.
+     * Data is fetched from the ImportHelper class, which reads from a CSV file.
+     */
     private void loadShowtimesAndMovies() {
-        // Fetch movie and showtime data
+        // Fetch the showtimes and movies from the helper class
         List<Showtime> showtimes = ImportHelper.loadShowtimesFromCSV();
         List<Movie> movies = ImportHelper.loadMoviesFromCSV();
 
-        // Clear the ListViews before loading new data
+        // Clear any existing items in the ListViews to avoid duplicates
         movieTitleListView.getItems().clear();
         showtimeListView.getItems().clear();
 
-        // Create a DateTimeFormatter for formatting the showtime
+        // Formatter for displaying showtimes in a readable format (e.g., YYYY-MM-DD HH:mm)
         DateTimeFormatter showtimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
-        // Create a mapping of movieId to movie title for quick lookup
+        // Populate the ListViews with movie titles and corresponding showtimes
         for (Movie movie : movies) {
-            movieTitleListView.getItems().add(movie.getMovieName()); // Add movie title to the ListView
+            // Add each movie's title to the movieTitleListView
+            movieTitleListView.getItems().add(movie.getMovieName());
 
-            // Find all showtimes for the current movie
+            // Find and add showtimes associated with the current movie
             for (Showtime showtime : showtimes) {
-                if (showtime.getMovieId() == movie.getMovieId()) {  // Compare movie IDs
-                    // Add the corresponding showtime to the showtime ListView
-                    showtimeListView.getItems().add(showtime.getScreenTimeDateTime().format(showtimeFormatter)); // Format the showtime
+                if (showtime.getMovieId() == movie.getMovieId()) { // Match showtime with movie by ID
+                    // Add formatted showtime to the showtimeListView
+                    showtimeListView.getItems().add(showtime.getScreenTimeDateTime().format(showtimeFormatter));
                 }
             }
         }
     }
 
     /**
-     * Handles the log out action.
-     * Logs the user out and returns to the login screen.
+     * Handles the log out action triggered by the log out button.
+     * Closes the application.
      */
     @FXML
     private void onLogOut() {
+        // Exit the application when the log out button is clicked
         System.exit(0);
     }
 
     /**
      * Handles the purchase button click.
-     * Processes the selected movie showtime for purchasing tickets.
+     * Navigates to the E-Ticket page for ticket purchasing.
      */
     private void onPurchase() {
-        // Logic to load the E-Ticket page when the purchase button is clicked
         try {
-            // Load the e-ticket page view
+            // Load the FXML file for the E-Ticket page
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/path/to/e-ticket-page-view.fxml"));
-            Scene eTicketScene = new Scene(loader.load());
+            Scene eTicketScene = new Scene(loader.load()); // Create a new scene using the loaded layout
 
-            // Get the current stage and set the new scene
+            // Get the current stage from the purchase button and set the new scene
             Stage stage = (Stage) purchasedButton.getScene().getWindow();
             stage.setScene(eTicketScene);
-            stage.show();
+            stage.show(); // Display the E-Ticket page
         } catch (IOException e) {
+            // Handle errors that may occur during the loading process
             e.printStackTrace();
             System.out.println("Error loading e-ticket page view.");
         }
